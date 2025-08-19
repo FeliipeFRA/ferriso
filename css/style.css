@@ -1,9 +1,10 @@
 /********** Template CSS **********/
 :root {
-    --primary: #009CFF;
+    --primary: #002c53;
     --secondary: #777777;
     --light: #F8F8F8;
     --dark: #252525;
+    --vermelho-ferriso: #ff0f11;
 }
 
 .back-to-top {
@@ -86,7 +87,7 @@
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
-    color: var(--dark);
+    color: var(--vermelho-ferriso);
 }
 
 .navbar.sticky-top {
@@ -489,3 +490,30 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+/*** Mudanças no Template ***/
+
+/* Corrigido a cor primária que estava sem valor */
+.bg-primary,
+.navbar.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.text-primary   { color: var(--primary) !important; }
+.border-primary { border-color: var(--primary) !important; }
+
+.btn-primary {
+  color: #fff;
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  /* use um tom um pouco mais escuro do seu azul */
+  background-color: #00558F;   /* ajuste conforme sua cor */
+  border-color: #00558F;
+}
+
+/* Links que usam a “cor primária” */
+a { color: var(--primary); }
+a:hover { color: #00558F; } /* ajuste o hover também */
