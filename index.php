@@ -1,10 +1,15 @@
+<?php
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="utf-8">
     <title>Ferriso - Isolações Térmicas</title>
+    <meta name="author" content="HTML Codex">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Meta Tags - Fazer SEO -->
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -33,12 +38,12 @@
 </head>
 
 <body>
-    <!-- Spinner Start -->
+    <!-- LOADING -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
-        <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
+        <div class="spinner-border spinner-gradient" role="status" style="width:6rem;height:6rem;"></div>
+        <img src="/img/F.png" alt="Carregando..." class="position-absolute top-50 start-50 translate-middle" style="width: 50px; height: 50px;">
     </div>
-    <!-- Spinner End -->
+    <!-- FIM DO LOADING -->
 
 
     <!-- Topbar Start -->
@@ -66,54 +71,63 @@
     <!-- Topbar End -->
 
 
-    <!-- Brand & Contact Start -->
+    <!-- INFOS BÁSICAS -->
     <div class="container-fluid py-4 px-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="row align-items-center top-bar">
-            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+            <!-- Logo: ocupa 12 no mobile, 3 no lg -->
+            <div class="col-12 col-lg-3 text-center text-lg-start">
                 <a href="" class="navbar-brand m-0 p-0">
                     <img src="img/logo.png" alt="Logo">
                 </a>
             </div>
-            <div class="col-lg-8 col-md-7 d-none d-lg-block">
-                <div class="row">
-                    <div class="col-4">
-                        <div class="d-flex align-items-center justify-content-end">
+
+            <!-- Info: 12 no mobile, 9 no lg -->
+            <div class="col-12 col-lg-9 d-none d-lg-block">
+                <div class="row gx-4 gy-2">
+                    <!-- No LG: 2 colunas (6+6). No XL: 3 colunas (4+2+5) -->
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="d-flex align-items-center justify-content-start gap-2 gap-xl-3">
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle">
                                 <i class="far fa-clock text-primary"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-2">Horário:</p>
-                                <h6 class="mb-0">Seg - Sex, 8:00 - 17:00</h6>
+                            <div class="min-w-0">
+                                <p class="mb-1 d-none d-xl-block">Horário:</p>
+                                <h6 class="mb-0 text-truncate">Seg - Sex, 8:00 - 17:00</h6>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="d-flex align-items-center justify-content-end">
+
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="d-flex align-items-center justify-content-start gap-2 gap-xl-3">
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle">
                                 <i class="fa fa-phone text-primary"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-2">Telefone:</p>
-                                <h6 class="mb-0">(16) 99105-8025</h6>
+                            <div class="min-w-0">
+                                <p class="mb-1 d-none d-xl-block">Telefone:</p>
+                                <h6 class="mb-0 text-truncate">(16) 99105-8025</h6>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="d-flex align-items-center justify-content-end">
+
+                    <div class="col-lg-6 col-xl-5">
+                        <div class="d-flex align-items-center justify-content-start gap-2 gap-xl-3">
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle">
                                 <i class="far fa-envelope text-primary"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-2">Email:</p>
-                                <h6 class="mb-0">contato@ferrisoisolamentos.com.br</h6>
+                            <div class="min-w-0">
+                                <p class="mb-1 d-none d-xl-block">Email:</p>
+                                <h6 class="mb-0 text-truncate" title="contato@ferrisoisolamentos.com.br">
+                                    contato@ferrisoisolamentos.com.br
+                                </h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- Brand & Contact End -->
+
 
 
     <!-- Navbar Start -->
@@ -137,9 +151,9 @@
                         <a href="404.html" class="dropdown-item">404 Page</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contato</a>
+                <a href="contact.html" class="nav-item nav-link d-block d-lg-none">Contato</a>
             </div>
-            <a href="https://htmlcodex.com/web-design-agency-html-template-pro" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Pro Version</a>
+            <a href="contact.html" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
         </div>
     </nav>
     <!-- Navbar End -->
