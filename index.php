@@ -46,7 +46,8 @@
     <!-- FIM DO LOADING -->
 
 
-    <!-- Topbar Start -->
+    <!-- REDES SOCIAIS E TERMOS, ADICIONAR DEPOIS-->
+    <!--
     <div class="container-fluid bg-light px-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="row gx-0 align-items-center d-none d-lg-flex">
             <div class="col-lg-6 px-5 text-start">
@@ -58,7 +59,7 @@
                 </ol>
             </div>
             <div class="col-lg-6 px-5 text-end">
-                <small>Follow us:</small>
+                <small>Nos siga nas redes:</small>
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn-square text-primary border-end rounded-0" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn-square text-primary border-end rounded-0" href=""><i class="fab fa-twitter"></i></a>
@@ -68,7 +69,7 @@
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
+    -->
 
 
     <!-- INFOS BÁSICAS -->
@@ -130,7 +131,7 @@
 
 
 
-    <!-- Navbar Start -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
         <a href="#" class="navbar-brand ms-3 d-lg-none">MENU</a>
         <button type="button" class="navbar-toggler me-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -156,7 +157,7 @@
             <a href="contact.html" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
         </div>
     </nav>
-    <!-- Navbar End -->
+    <!-- Navbar -->
 
 
     <!-- Carousel Start -->
@@ -164,18 +165,18 @@
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                    <img class="img-fluid" src="img/carousel-1.jpg" alt="Image">
+                    <img class="img-fluid" src="img/carousel-1.png" alt="Image">
                 </button>
                 <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="1" aria-label="Slide 2">
-                    <img class="img-fluid" src="img/carousel-2.jpg" alt="Image">
+                    <img class="img-fluid" src="img/carousel-2.png" alt="Image">
                 </button>
                 <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2" aria-label="Slide 3">
-                    <img class="img-fluid" src="img/carousel-3.jpg" alt="Image">
+                    <img class="img-fluid" src="img/carousel-3.png" alt="Image">
                 </button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                    <img class="w-100" src="img/carousel-1.png" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-4 animated zoomIn">NÓS OFERECEMOS</h4>
@@ -184,20 +185,20 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                    <img class="w-100" src="img/carousel-2.png" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>
-                            <h1 class="display-1 text-white mb-0 animated zoomIn">Creative & Innovative Digital Solution</h1>
+                            <h4 class="text-white text-uppercase mb-4 animated zoomIn">TRAZEMOS</h4>
+                            <h1 class="display-1 text-white mb-0 animated zoomIn">Modernidade com a Solidez da Tradição</h1>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="img/carousel-3.jpg" alt="Image">
+                    <img class="w-100" src="img/carousel-3.png" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>
-                            <h1 class="display-1 text-white mb-0 animated zoomIn">Creative & Innovative Digital Solution</h1>
+                            <h4 class="text-white text-uppercase mb-4 animated zoomIn">CRESCEMOS COM</h4>
+                            <h1 class="display-1 text-white mb-0 animated zoomIn">O Equilíbrio entre Tradição e Inovação</h1>
                         </div>
                     </div>
                 </div>
@@ -205,12 +206,12 @@
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">Anterior</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
                 data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">Próximo</span>
             </button>
         </div>
     </div>
