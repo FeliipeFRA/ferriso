@@ -259,35 +259,38 @@
     <!-- Informacoes -->
 
 
-    <!-- About Start -->
+    <!-- Sobre -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="img-border">
-                        <img class="img-fluid" src="img/about.jpg" alt="">
+                        <img class="img-fluid" src="img/about.jpeg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
-                        <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                        <h1 class="display-6 mb-4">#1 Digital Solution With <span class="text-primary">10 Years</span> Of Experience</h1>
-                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                        <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.</p>
+                        <h6 class="section-title bg-white text-start text-primary pe-3">SOBRE</h6>
+                        <h1 class="display-6 mb-4">Experiência que <span class="text-primary">MODERNIZA</span> o Isolamento Térmico</h1>
+                        <p>A Ferriso Isolamentos nasceu para ser a ponte entre a experiência de campo e o que há de mais atual em soluções de isolamento térmico. Embora recente como CNPJ, nossa base é formada por fundadores que há anos atuam no setor, acumulando projetos em diferentes segmentos e entendendo, na prática, o que funciona — e o que precisa evoluir.</p>
+                        <!--<p class="mb-4">Surgimos com uma missão clara: modernizar e inovar o isolamento térmico, tornando-o mais eficiente, seguro e acessível. Isso significa especificações técnicas bem-feitas, escolha criteriosa de materiais, instalação com padrão de qualidade e acompanhamento próximo do início ao pós-obra. Trabalhamos com foco em desempenho energético, redução de perdas, longevidade das soluções e cumprimento rigoroso de prazos e normas.</p>
+                        <p class="mb-4">Unimos método e atualização constante para entregar resultados consistentes: processos organizados, comunicação transparente e soluções sob medida para cada cliente. É assim que transformamos conhecimento acumulado em melhorias reais no dia a dia — com um olhar atual, sem abrir mão da solidez que só a prática oferece.</p>
+            
                         <div class="d-flex align-items-center mb-4 pb-2">
                             <img class="flex-shrink-0 rounded-circle" src="img/team-1.jpg" alt="" style="width: 50px; height: 50px;">
                             <div class="ps-4">
-                                <h6>Jhon Doe</h6>
+                                <h6>Moço</h6>
                                 <small>SEO & Founder</small>
                             </div>
                         </div>
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">Read More</a>
+                        -->
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">SAIBA MAIS</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
+    <!-- Sobre -->
 
 
     <!-- Service Start -->
