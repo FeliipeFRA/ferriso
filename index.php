@@ -9,9 +9,13 @@
     <title>Ferriso - Isolações Térmicas</title>
     <meta name="author" content="HTML Codex">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <!-- Meta Tags - Fazer SEO -->
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+
+
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Ferriso Isolamentos: soluções de isolamento térmico para indústrias e obras, com equipe experiente, qualidade certificada e entrega ágil em Ribeirão Preto e região.">
+    <meta name="keywords" content="isolamento térmico, isolamento térmico industrial, eficiência energética, dutos e tubulações, tanques e caldeiras, revestimento térmico, economia de energia, Ribeirão Preto, Ferriso Isolamentos">
+
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -35,6 +39,19 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NV11WS86B9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-NV11WS86B9');
+    </script>
 </head>
 
 <body>
