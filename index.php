@@ -14,7 +14,7 @@
 
     <!-- Meta Tags -->
     <meta name="description" content="Ferriso Isolamentos: soluções de isolamento térmico para indústrias e obras, com equipe experiente, qualidade certificada e entrega ágil em Ribeirão Preto e região.">
-    <meta name="keywords" content="isolamento térmico, isolamento térmico industrial, eficiência energética, dutos e tubulações, tanques e caldeiras, revestimento térmico, economia de energia, Ribeirão Preto, Ferriso Isolamentos">
+    <meta name="keywords" content="ferriso, ferriso isolamentos, ferriso isolações, ferriso isolacoes, isolacoes, isolamento térmico, isolamento térmico industrial, eficiência energética, dutos e tubulações, tanques e caldeiras, revestimento térmico, economia de energia, Ribeirão Preto, Ferriso Isolamentos">
 
 
     <!-- Favicon -->
@@ -632,8 +632,8 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Address</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <h5 class="text-light mb-4 hover-vermelho">Endereço</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Barrinha, São Paulo</p>
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(16) 99105-8025</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
                     <div class="d-flex pt-2">
@@ -688,11 +688,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                        <a href="https://ferrisoisolamentos.com.br">Ferriso Isolações</a>, Todos os Direitos Reservados.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                       Inovação com a Força da Experiência</a>
                     </div>
                 </div>
             </div>

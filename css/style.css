@@ -5,7 +5,17 @@
     --light: #F8F8F8;
     --dark: #252525;
     --vermelho-ferriso: #ff0f11;
+    
 }
+
+/* Se quiser manter o branco do .text-light até o hover */
+.hover-vermelho:hover {
+  color: var(--vermelho-ferriso) !important; /* precisa do !important para sobrepor o .text-light do Bootstrap */
+}
+
+/* Se não usar .text-light, pode tirar o !important: */
+/* .hover-vermelho:hover { color: var(--vermelho-ferriso); } */
+
 
 .back-to-top {
     position: fixed;
