@@ -1,3 +1,6 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,15 +36,16 @@
 </head>
 
 <body>
-    <!-- Spinner Start -->
+     <!-- LOADING -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
-        <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
+        <div class="spinner-border spinner-gradient" role="status" style="width:6rem;height:6rem;"></div>
+        <img src="/img/F.png" alt="Carregando..." class="position-absolute top-50 start-50 translate-middle" style="width: 50px; height: 50px;">
     </div>
-    <!-- Spinner End -->
+    <!-- FIM DO LOADING -->
 
 
-    <!-- Topbar Start -->
+    <!-- REDES SOCIAIS E TERMOS, ADICIONAR DEPOIS-->
+    <!--
     <div class="container-fluid bg-light px-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="row gx-0 align-items-center d-none d-lg-flex">
             <div class="col-lg-6 px-5 text-start">
@@ -53,7 +57,7 @@
                 </ol>
             </div>
             <div class="col-lg-6 px-5 text-end">
-                <small>Follow us:</small>
+                <small>Nos siga nas redes:</small>
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn-square text-primary border-end rounded-0" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn-square text-primary border-end rounded-0" href=""><i class="fab fa-twitter"></i></a>
@@ -63,61 +67,69 @@
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
+    -->
 
 
-    <!-- Brand & Contact Start -->
+    <!-- INFOS BÁSICAS -->
     <div class="container-fluid py-4 px-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="row align-items-center top-bar">
-            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+            <!-- Logo: ocupa 12 no mobile, 3 no lg -->
+            <div class="col-12 col-lg-3 text-center text-lg-start">
                 <a href="" class="navbar-brand m-0 p-0">
-                    <h1 class="fw-bold text-primary m-0"><i class="fa fa-laptop-code me-3"></i>DGcom</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                    <img src="img/logo.png" alt="Logo">
                 </a>
             </div>
-            <div class="col-lg-8 col-md-7 d-none d-lg-block">
-                <div class="row">
-                    <div class="col-4">
-                        <div class="d-flex align-items-center justify-content-end">
+
+            <!-- Info: 12 no mobile, 9 no lg -->
+            <div class="col-12 col-lg-9 d-none d-lg-block">
+                <div class="row gx-4 gy-2">
+                    <!-- No LG: 2 colunas (6+6). No XL: 3 colunas (4+2+5) -->
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="d-flex align-items-center justify-content-start gap-2 gap-xl-3">
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle">
                                 <i class="far fa-clock text-primary"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-2">Opening Hour</p>
-                                <h6 class="mb-0">Mon - Fri, 8:00 - 9:00</h6>
+                            <div class="min-w-0">
+                                <p class="mb-1 d-none d-xl-block">Horário:</p>
+                                <h6 class="mb-0 text-truncate">Seg - Sex, 8:00 - 17:00</h6>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="d-flex align-items-center justify-content-end">
+
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="d-flex align-items-center justify-content-start gap-2 gap-xl-3">
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle">
                                 <i class="fa fa-phone text-primary"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-2">Call Us</p>
-                                <h6 class="mb-0">+012 345 6789</h6>
+                            <div class="min-w-0">
+                                <p class="mb-1 d-none d-xl-block">Telefone:</p>
+                                <h6 class="mb-0 text-truncate">(16) 99105-8025</h6>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="d-flex align-items-center justify-content-end">
+
+                    <div class="col-lg-6 col-xl-5">
+                        <div class="d-flex align-items-center justify-content-start gap-2 gap-xl-3">
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle">
                                 <i class="far fa-envelope text-primary"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-2">Email Us</p>
-                                <h6 class="mb-0">info@example.com</h6>
+                            <div class="min-w-0">
+                                <p class="mb-1 d-none d-xl-block">Email:</p>
+                                <h6 class="mb-0 text-truncate" title="contato@ferrisoisolamentos.com.br">
+                                    contato@ferrisoisolamentos.com.br
+                                </h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- Brand & Contact End -->
 
 
-    <!-- Navbar Start -->
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
         <a href="#" class="navbar-brand ms-3 d-lg-none">MENU</a>
         <button type="button" class="navbar-toggler me-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -125,41 +137,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav me-auto p-3 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About Us</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <a href="project.html" class="nav-item nav-link">Projects</a>
+                <a href="index.php" class="nav-item nav-link active">Início</a>
+                <a href="sobre.php" class="nav-item nav-link">Sobre</a>
+                <a href="servicos.php" class="nav-item nav-link">Serviços</a>
+                <a href="portifolio.php" class="nav-item nav-link">Portifólio</a>
+                <a href="produtos.php" class="dropdown-item">Produtos</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Outros</a>
                     <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
                         <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="team.html" class="dropdown-item">Our Team</a>
+                        
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item active">404 Page</a>
+                        <a href="404.html" class="dropdown-item">404 Page</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                <a href="contact.html" class="nav-item nav-link d-block d-lg-none">Contato</a>
             </div>
-            <a href="https://htmlcodex.com/web-design-agency-html-template-pro" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Pro Version</a>
+            <a href="contact.html" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
         </div>
     </nav>
-    <!-- Navbar End -->
-
-
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container text-center py-5">
-            <h1 class="display-4 text-white animated slideInDown mb-3">404 Page</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-primary active" aria-current="page">404 Page</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Page Header End -->
+    <!-- Navbar -->
 
 
     <!-- 404 Start -->

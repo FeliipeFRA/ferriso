@@ -156,22 +156,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav me-auto p-3 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Início</a>
-                <a href="about.html" class="nav-item nav-link">Sobre</a>
-                <a href="service.html" class="nav-item nav-link">Serviços</a>
-                <a href="project.html" class="nav-item nav-link">Portifólio</a>
+                <a href="index.php" class="nav-item nav-link active">Início</a>
+                <a href="sobre.php" class="nav-item nav-link">Sobre</a>
+                <a href="servicos.php" class="nav-item nav-link">Serviços</a>
+                <a href="portifolio.php" class="nav-item nav-link">Portifólio</a>
+                <a href="produtos.php" class="nav-item nav-link">Produtos</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Outros</a>
                     <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
                         <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="team.html" class="dropdown-item">Our Team</a>
+                        
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                         <a href="404.html" class="dropdown-item">404 Page</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link d-block d-lg-none">Contato</a>
             </div>
-            <a href="contact.html" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
+            <a href="contato.php" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
         </div>
     </nav>
     <!-- Navbar -->
