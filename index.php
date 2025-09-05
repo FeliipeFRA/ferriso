@@ -13,12 +13,23 @@
 
 
     <!-- Meta Tags -->
-    <meta name="description" content="Ferriso Isolamentos: soluções de isolamento térmico para indústrias e obras, com equipe experiente, qualidade certificada e entrega ágil em Ribeirão Preto e região.">
-    <meta name="keywords" content="ferriso, ferriso isolamentos, ferriso isolações, ferriso isolacoes, isolacoes, isolamento térmico, isolamento térmico industrial, eficiência energética, dutos e tubulações, tanques e caldeiras, revestimento térmico, economia de energia, Ribeirão Preto, Ferriso Isolamentos">
+    <meta name="description" content="Soluções de isolamento térmico para indústrias e obras, com equipe experiente, qualidade certificada e entrega ágil em Ribeirão Preto e região.">
+    <meta name="keywords" content="ferriso, ferriso isolamentos, ferriso isolações, ferriso isolacoes, isolacoes, isolamento térmico, isolamento térmico industrial, eficiência energética, dutos e tubulações, tanques e caldeiras, revestimento térmico, economia de energia, Ribeirão Preto, Ferriso Isolamentos, barrinha, isolamento barrinha">
 
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+
+    <!-- Infos Google Search -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://www.ferrisoisolamentos.com.br",
+            "name": "Ferriso Isolamentos",
+            "alternateName": "Ferriso"
+        }
+    </script>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,6 +50,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NV11WS86B9"></script>
@@ -158,19 +170,14 @@
             <div class="navbar-nav me-auto p-3 p-lg-0">
                 <a href="index.php" class="nav-item nav-link active">Início</a>
                 <a href="sobre.php" class="nav-item nav-link">Sobre</a>
-                <a href="servicos.php" class="nav-item nav-link">Serviços</a>
                 <a href="portifolio.php" class="nav-item nav-link">Portifólio</a>
+                <a href="servicos.php" class="nav-item nav-link">Serviços</a>
                 <a href="produtos.php" class="nav-item nav-link">Produtos</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Outros</a>
-                    <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
+                <a href="avaliacoes.php" class="nav-item nav-link">Avaliações</a>
+                <!-- mobile -->
+                <a href="contato.php" class="nav-item nav-link d-block d-lg-none">Contato</a>
             </div>
+            <!-- desktop -->
             <a href="contato.php" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
         </div>
     </nav>
@@ -301,7 +308,7 @@
                             </div>
                         </div>
                         -->
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">SAIBA MAIS</a>
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="/sobre.php">SAIBA MAIS</a>
                     </div>
                 </div>
             </div>
@@ -314,8 +321,8 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
-                <h1 class="display-6 mb-4">We Focuse On Making The Best In All Sectors</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">ÁREAS DE ATUAÇÃO</h6>
+                <h1 class="display-6 mb-4">Isolamento De Qualidade Para Diversos Setores</h1>
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -691,7 +698,7 @@
                         <a href="https://ferrisoisolamentos.com.br">Ferriso Isolações</a>, Todos os Direitos Reservados.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                       Inovação com a Força da Experiência</a>
+                        Inovação com a Força da Experiência</a>
                     </div>
                 </div>
             </div>
