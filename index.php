@@ -1,11 +1,20 @@
 <?php
-//reports
+// reports
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-//conexão
+// conexão
 require_once 'db.php';
-mysqli_set_charset($con, 'utf8mb4');
+
+// query dados area de atuacao
+$stmt = $con->prepare("
+  SELECT id, nome, descricao, link_foto
+  FROM areas_atuacao
+  ORDER BY nome ASC
+");
+$stmt->execute();
+$res = $stmt->get_result();
+$areas = $res->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -324,21 +333,28 @@ mysqli_set_charset($con, 'utf8mb4');
     <!-- Sobre -->
 
 
-    <!-- Service Start -->
+    <!-- Areas de Atuação -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h6 class="section-title bg-white text-center text-primary px-3">ÁREAS DE ATUAÇÃO</h6>
                 <h1 class="display-6 mb-4">Isolamento De Qualidade Para Diversos Setores</h1>
             </div>
+
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                $
+
+                <?php foreach ($areas as $a): ?>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="">
                         <img class="img-fluid rounded mb-4" src="img/service-1.jpg" alt="">
-                        <h4 class="mb-0">Sucroalcooleiro</h4>
-                        
+                        <h4 class="mb-0"><?= htmlspecialchars($a['nome']) ?> </h4>
+                        <p><?= htmlspecialchars($a['descricao']) ?></p>
                     </a>
                 </div>
+
+                <?php endforeach; ?>
+                
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="">
                         <img class="img-fluid rounded mb-4" src="img/service-2.jpg" alt="">
