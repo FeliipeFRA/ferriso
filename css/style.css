@@ -147,6 +147,32 @@
     transition: .5s;
 }
 
+/* estado normal */
+.btn-contato{
+  /* base parecida com o btn-light */
+  background-color: var(--light);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+/* hover / focus */
+.btn-contato:hover,
+.btn-contato:focus-visible{
+  /* opte por uma das duas linhas abaixo: cor sólida OU gradiente */
+  /* background-color: var(--primary); */
+  background-image: linear-gradient(135deg, var(--primary), var(--vermelho-ferriso));
+  color: #fff;
+  border-color: transparent; /* ou var(--primary) se preferir borda */
+  box-shadow: 0 0 0 .25rem rgba(0, 44, 83, .25); /* realce de foco */
+}
+
+/* active (clique) */
+.btn-contato:active{
+  filter: brightness(.95);
+}
+
+
 @media (max-width: 991.98px) {
     .navbar .navbar-nav .nav-link {
         margin-right: 0;
