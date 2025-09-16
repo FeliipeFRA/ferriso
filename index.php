@@ -342,49 +342,16 @@ $areas = $res->fetch_all(MYSQLI_ASSOC);
             </div>
 
             <div class="row g-4">
-                $
-
-                <?php foreach ($areas as $a): ?>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a class="service-item d-block rounded text-center h-100 p-4" href="">
-                        <img class="img-fluid rounded mb-4" src="img/service-1.jpg" alt="">
-                        <h4 class="mb-0"><?= htmlspecialchars($a['nome']) ?> </h4>
-                        <p><?= htmlspecialchars($a['descricao']) ?></p>
-                    </a>
-                </div>
-
+                <?php $delays = ['0.1s','0.3s','0.5s']; ?>
+                <?php foreach ($areas as $idx => $a): ?>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="<?= $delays[$idx % 3] ?>">
+                        <a class="service-item d-block rounded text-center h-100 p-4" href="">
+                            <img class="img-fluid rounded mb-4" src="img/service-1.jpg" alt="">
+                            <h4 class="mb-0"><?= htmlspecialchars($a['nome']) ?> </h4>
+                            <span><?= htmlspecialchars($a['descricao']) ?><span>
+                        </a>
+                    </div>
                 <?php endforeach; ?>
-                
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a class="service-item d-block rounded text-center h-100 p-4" href="">
-                        <img class="img-fluid rounded mb-4" src="img/service-2.jpg" alt="">
-                        <h4 class="mb-0">Alimentos & Bebidas</h4>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a class="service-item d-block rounded text-center h-100 p-4" href="">
-                        <img class="img-fluid rounded mb-4" src="img/service-3.jpg" alt="">
-                        <h4 class="mb-0">Metal-mecânico e bens de capital</h4>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a class="service-item d-block rounded text-center h-100 p-4" href="">
-                        <img class="img-fluid rounded mb-4" src="img/service-4.jpg" alt="">
-                        <h4 class="mb-0">Construção civiL</h4>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a class="service-item d-block rounded text-center h-100 p-4" href="">
-                        <img class="img-fluid rounded mb-4" src="img/service-5.jpg" alt="">
-                        <h4 class="mb-0">Refrigeração industrial</h4>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a class="service-item d-block rounded text-center h-100 p-4" href="">
-                        <img class="img-fluid rounded mb-4" src="img/service-6.jpg" alt="">
-                        <h4 class="mb-0">Saúde</h4>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
