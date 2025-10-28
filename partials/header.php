@@ -181,6 +181,7 @@ $active = $active ?? '';
             </div>
             <!-- desktop -->
             <a href="contato.php" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
+            <a href="/admin" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Admin</a>
         </div>
     </nav>
     <!-- Navbar -->

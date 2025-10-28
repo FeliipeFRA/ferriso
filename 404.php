@@ -18,7 +18,7 @@ require __DIR__ . '/partials/header.php';
                     <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
                     <h1 class="display-1">404</h1>
                     <h1 class="mb-4">Página Não Encontrada</h1>
-                    <p class="mb-4">O link pode estar incorreto ou a páginna foi removida.</p>
+                    <p class="mb-4">O link pode estar incorreto ou a página foi removida.</p>
                     <a class="btn btn-primary rounded-pill py-3 px-5" href="index.php">Volte ao Ínicio</a>
                 </div>
             </div>
