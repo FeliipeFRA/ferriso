@@ -1,0 +1,24 @@
+Allow: /
+
+Disallow: /admin/
+Disallow: /painel/
+Disallow: /control/
+Disallow: /phpmyadmin/
+Disallow: /vendor/
+Disallow: /node_modules/
+Disallow: /logs/
+Disallow: /tmp/
+
+Disallow: /*?*utm_*
+Disallow: /*?*gclid=*
+Disallow: /*?*fbclid=*
+Disallow: /*?*debug=*
+Disallow: /*?*ajax=*
+
+Disallow: /busca
+Disallow: /search
+
+Disallow: /*.sql$
+Disallow: /*.zip$
+
+Sitemap: https://www.ferrisoisolamentos.com.br/sitemap.xml
