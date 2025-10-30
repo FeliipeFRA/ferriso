@@ -108,7 +108,7 @@ $active = $active ?? '';
         <div class="row align-items-center top-bar">
             <!-- Logo: ocupa 12 no mobile, 3 no lg -->
             <div class="col-12 col-lg-3 text-center text-lg-start">
-                <a href="" class="navbar-brand m-0 p-0">
+                <a href="index.php" class="navbar-brand m-0 p-0">
                     <img src="img/logo.png" alt="Logo">
                 </a>
             </div>
@@ -172,16 +172,15 @@ $active = $active ?? '';
             <div class="navbar-nav me-auto p-3 p-lg-0">
                 <a href="index.php" class="nav-item nav-link <?= $active==='home'?'active':'' ?>">Início</a>
                 <a href="sobre.php" class="nav-item nav-link <?= $active==='sobre'?'active':'' ?>">Sobre</a>
-                <a href="portifolio.php" class="nav-item nav-link">Portifólio</a>
-                <a href="servicos.php" class="nav-item nav-link">Serviços</a>
-                <a href="produtos.php" class="nav-item nav-link">Produtos</a>
-                <a href="avaliacoes.php" class="nav-item nav-link">Avaliações</a>
+                <a href="portifolio.php" class="nav-item nav-link <?= $active==='portifolio'?'active':'' ?>">Portifólio</a>
+                <a href="areas.php" class="nav-item nav-link <?= $active==='areas'?'active':'' ?>">Serviços</a>
+                <a href="produtos.php" class="nav-item nav-link <?= $active==='produtos'?'active':'' ?>">Produtos</a>
+                <a href="avaliacoes.php" class="nav-item nav-link <?= $active==='avaliacoes'?'active':'' ?>">Avaliações</a>
                 <!-- mobile -->
                 <a href="contato.php" class="nav-item nav-link d-block d-lg-none">Contato</a>
             </div>
             <!-- desktop -->
             <a href="contato.php" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
-            <a href="/admin" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Admin</a>
         </div>
     </nav>
     <!-- Navbar -->

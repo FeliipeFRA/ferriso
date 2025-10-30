@@ -18,7 +18,7 @@
                 <h5 class="text-light mb-4">Links Rápidos</h5>
                 <a class="btn btn-link" href="sobre.php">Sobre</a>
                 <a class="btn btn-link" href="contato.php">Contato</a>
-                <a class="btn btn-link" href="servicos.php">Serviços</a>
+                <a class="btn btn-link" href="areas.php">Áreas de Atuação</a>
                 <a class="btn btn-link" href="">Política de Privacidade</a>
             </div>
             <div class="col-lg-3 col-md-6">

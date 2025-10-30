@@ -9,8 +9,9 @@ require_once __DIR__ . '/config/config.php';
 
 // query dados area de atuacao
 $stmt = $con->prepare("
-  SELECT id, nome, descricao, link_foto
+  SELECT id, nome, resumo, capa_img
   FROM areas_atuacao
+  WHERE destaque = 1
   ORDER BY nome ASC
 ");
 $stmt->execute();
@@ -165,9 +166,9 @@ error_reporting(E_ALL);
             <?php foreach ($areas as $idx => $a): ?>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="<?= $delays[$idx % 3] ?>">
                     <div class="service-item d-block rounded text-center h-100 p-4" href="">
-                        <img class="img-fluid rounded mb-4" src="<?= htmlspecialchars(img_url(($a['link_foto']))) ?>" alt="<?= htmlspecialchars($a['nome']) ?>">
+                        <img class="img-fluid rounded mb-4" src="<?= htmlspecialchars(img_url(($a['capa_img']))) ?>" alt="<?= htmlspecialchars($a['nome']) ?>">
                         <h4 class="mb-0"><?= htmlspecialchars($a['nome']) ?> </h4>
-                        <p style="margin-top: 1rem;"><?= htmlspecialchars($a['descricao']) ?></p>
+                        <p style="margin-top: 1rem;"><?= htmlspecialchars($a['resumo']) ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>
