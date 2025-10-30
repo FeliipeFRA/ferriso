@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
     <!-- Favicon -->
     <link href="../../img/favicon.ico" rel="icon">
+    
 </head>
 
 <body class="hold-transition sidebar-mini">

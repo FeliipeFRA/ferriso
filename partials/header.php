@@ -18,7 +18,9 @@ $active = $active ?? '';
 
     <!-- Meta Tags -->
     <meta name="description" content="Soluções de isolamento térmico para indústrias e obras, com equipe experiente, qualidade certificada e entrega ágil em Ribeirão Preto e região.">
-    <meta name="keywords" content="ferriso, ferriso isolamentos, ferriso isolações, ferriso isolacoes, isolacoes, isolamento térmico, isolamento térmico industrial, eficiência energética, dutos e tubulações, tanques e caldeiras, revestimento térmico, economia de energia, Ribeirão Preto, Ferriso Isolamentos, barrinha, isolamento barrinha">
+    <meta name="keywords" content="ferriso, ferriso isolamentos, ferriso isolações, ferriso isolacoes, isolacoes, isolamento térmico, revestimento térmico, Ribeirão Preto, barrinha, isolamento barrinha">
+    <link rel="canonical" href="https://ferrisoisolamentos.com.br" />
+    <link rel="manifest" href="site.webmanifest">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -48,11 +50,11 @@ $active = $active ?? '';
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" >
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NV11WS86B9"></script>

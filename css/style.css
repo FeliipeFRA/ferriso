@@ -5,12 +5,16 @@
     --light: #F8F8F8;
     --dark: #252525;
     --vermelho-ferriso: #ff0f11;
-    
+}
+
+body{
+    font-family: "Open Sans", sans-serif !important;
 }
 
 /* Se quiser manter o branco do .text-light até o hover */
 .hover-vermelho:hover {
-  color: var(--vermelho-ferriso) !important; /* precisa do !important para sobrepor o .text-light do Bootstrap */
+    color: var(--vermelho-ferriso) !important;
+    /* precisa do !important para sobrepor o .text-light do Bootstrap */
 }
 
 /* Se não usar .text-light, pode tirar o !important: */
@@ -41,46 +45,45 @@
 }
 
 /*** Degradê Spinner ***/
-.spinner-border.spinner-gradient{
-  /* espessura do anel */
-  --ring-thickness: .35rem;
+.spinner-border.spinner-gradient {
+    /* espessura do anel */
+    --ring-thickness: .35rem;
 
-  border: 0 !important;           /* remove a borda sólida do Bootstrap */
-  border-radius: 50%;
-  
-  /* degradê circular entre --primary e --vermelho-ferriso */
-  background: conic-gradient(
-    var(--primary) 0 40%,
-    var(--vermelho-ferriso) 40% 80%,
-    var(--primary) 80% 100%
-  );
+    border: 0 !important;
+    /* remove a borda sólida do Bootstrap */
+    border-radius: 50%;
 
-  /* transforma o círculo em anel, “furando” o centro */
-  -webkit-mask: radial-gradient(farthest-side,
-                  transparent calc(100% - var(--ring-thickness)),
-                  #000         calc(100% - var(--ring-thickness)));
-          mask: radial-gradient(farthest-side,
-                  transparent calc(100% - var(--ring-thickness)),
-                  #000         calc(100% - var(--ring-thickness)));
+    /* degradê circular entre --primary e --vermelho-ferriso */
+    background: conic-gradient(var(--primary) 0 40%,
+            var(--vermelho-ferriso) 40% 80%,
+            var(--primary) 80% 100%);
 
-  /* mantém a animação padrão do Bootstrap */
-  animation: spinner-border .75s linear infinite;
+    /* transforma o círculo em anel, “furando” o centro */
+    -webkit-mask: radial-gradient(farthest-side,
+            transparent calc(100% - var(--ring-thickness)),
+            #000 calc(100% - var(--ring-thickness)));
+    mask: radial-gradient(farthest-side,
+            transparent calc(100% - var(--ring-thickness)),
+            #000 calc(100% - var(--ring-thickness)));
+
+    /* mantém a animação padrão do Bootstrap */
+    animation: spinner-border .75s linear infinite;
 }
 
 /* Fallback para navegadores sem suporte a mask */
-@supports not (mask: radial-gradient(black, white)){
-  .spinner-border.spinner-gradient{
-    border: var(--ring-thickness) solid var(--primary);
-    border-right-color: transparent;
-    background: none;
-  }
+@supports not (mask: radial-gradient(black, white)) {
+    .spinner-border.spinner-gradient {
+        border: var(--ring-thickness) solid var(--primary);
+        border-right-color: transparent;
+        background: none;
+    }
 }
 
 /* Opcional: respeitar preferência de reduzir animações */
-@media (prefers-reduced-motion: reduce){
-  .spinner-border.spinner-gradient{
-    animation-duration: 1.5s;
-  }
+@media (prefers-reduced-motion: reduce) {
+    .spinner-border.spinner-gradient {
+        animation-duration: 1.5s;
+    }
 }
 
 /*** Button ***/
@@ -148,28 +151,30 @@
 }
 
 /* estado normal */
-.btn-contato{
-  /* base parecida com o btn-light */
-  background-color: var(--light);
-  color: var(--primary);
-  border: 1px solid var(--primary);
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+.btn-contato {
+    /* base parecida com o btn-light */
+    background-color: var(--light);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 
 /* hover / focus */
 .btn-contato:hover,
-.btn-contato:focus-visible{
-  /* opte por uma das duas linhas abaixo: cor sólida OU gradiente */
-  /* background-color: var(--primary); */
-  background-image: linear-gradient(135deg, var(--primary), var(--vermelho-ferriso));
-  color: #fff;
-  border-color: transparent; /* ou var(--primary) se preferir borda */
-  box-shadow: 0 0 0 .25rem rgba(0, 44, 83, .25); /* realce de foco */
+.btn-contato:focus-visible {
+    /* opte por uma das duas linhas abaixo: cor sólida OU gradiente */
+    /* background-color: var(--primary); */
+    background-image: linear-gradient(135deg, var(--primary), var(--vermelho-ferriso));
+    color: #fff;
+    border-color: transparent;
+    /* ou var(--primary) se preferir borda */
+    box-shadow: 0 0 0 .25rem rgba(0, 44, 83, .25);
+    /* realce de foco */
 }
 
 /* active (clique) */
-.btn-contato:active{
-  filter: brightness(.95);
+.btn-contato:active {
+    filter: brightness(.95);
 }
 
 
@@ -235,7 +240,7 @@
         position: relative;
         min-height: 500px;
     }
-    
+
     #header-carousel .carousel-item img {
         position: absolute;
         width: 100%;
@@ -574,24 +579,38 @@
 /* Corrigido a cor primária que estava sem valor */
 .bg-primary,
 .navbar.bg-primary {
-  background-color: var(--primary) !important;
+    background-color: var(--primary) !important;
 }
 
-.text-primary   { color: var(--primary) !important; }
-.border-primary { border-color: var(--primary) !important; }
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.border-primary {
+    border-color: var(--primary) !important;
+}
 
 .btn-primary {
-  color: #fff;
-  background-color: var(--primary);
-  border-color: var(--primary);
+    color: #fff;
+    background-color: var(--primary);
+    border-color: var(--primary);
 }
+
 .btn-primary:hover,
 .btn-primary:focus {
-  /* use um tom um pouco mais escuro do seu azul */
-  background-color: #00558F;   /* ajuste conforme sua cor */
-  border-color: #00558F;
+    /* use um tom um pouco mais escuro do seu azul */
+    background-color: #00558F;
+    /* ajuste conforme sua cor */
+    border-color: #00558F;
 }
 
 /* Links que usam a “cor primária” */
-a { color: var(--primary); }
-a:hover { color: #00558F; } /* ajuste o hover também */
+a {
+    color: var(--primary);
+}
+
+a:hover {
+    color: #00558F;
+}
+
+/* ajuste o hover também */
