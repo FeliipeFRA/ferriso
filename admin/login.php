@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <!-- Meta Tags -->
   <meta name="robots" content="noindex,nofollow">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap 5 (necessário para spinner-border e utilitários) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -361,14 +361,6 @@
 
 <body>
 
-  <!-- LOADING -->
-  <div id="spinner"
-    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-border spinner-gradient" role="status" style="width:6rem;height:6rem;"></div>
-    <img src="../img/F.png" alt="Carregando..." class="position-absolute top-50 start-50 translate-middle"
-      style="width:50px;height:50px;">
-  </div>
-  <!-- FIM DO LOADING -->
 
   <!-- CONJUNTO CENTRALIZADO (logo + form) -->
   <div class="stack">
@@ -390,7 +382,11 @@
       </header>
 
       <section class="card__body">
-        <form action="/admin/layout.php" method="post" novalidate>
+        <form action="/config/auth_login.php" method="post" novalidate>
+          <input type="hidden" name="csrf" value="<?php
+                                                  require_once __DIR__ . 'config/php_init.php';
+                                                  echo htmlspecialchars(csrf_token(), ENT_QUOTES); ?>">
+          <!-- campos existentes: -->
           <div class="field">
             <label for="usuario">Usuário</label>
             <div class="control">
@@ -425,6 +421,9 @@
           </button>
 
           <div class="hint">Inovação com a Força da Experiência</div>
+          <input name="usuario" type="text" required>
+          <input name="password" type="password" required>
+          <button type="submit">Entrar</button>
         </form>
       </section>
     </main>
@@ -432,7 +431,7 @@
 
   <script>
     // Mostrar/ocultar senha
-    (function () {
+    (function() {
       const btn = document.querySelector('.toggle-pass');
       const pwd = document.getElementById('password');
       const eye = btn.querySelector('.icon-eye');
@@ -448,7 +447,7 @@
     })();
 
     // Estado de carregando ao enviar
-    (function () {
+    (function() {
       const form = document.querySelector('form');
       const btn = document.getElementById('btnSubmit');
       form.addEventListener('submit', () => {
@@ -458,7 +457,7 @@
     })();
 
     // Oculta o overlay do spinner quando a página terminar de carregar
-    window.addEventListener('load', function () {
+    window.addEventListener('load', function() {
       const sp = document.getElementById('spinner');
       if (sp) sp.classList.remove('show');
     });
