@@ -3,55 +3,86 @@
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-4 col-md-6">
-                <h5 class="text-light mb-4 hover-vermelho">Endereço</h5>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Barrinha, São Paulo</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(16) 99105-8025</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>contato@ferrisoisolamentos.com.br</p>
+                <h5 class="text-light mb-4 hover-vermelho">Informações</h5>
+                <p class="mb-2">
+                    <i class="fa fa-map-marker-alt me-3"></i>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Barrinha%2C%20S%C3%A3o%20Paulo" target="_blank" rel="noopener" class="text-reset text-decoration-none">
+                        Barrinha, São Paulo
+                    </a>
+                </p>
+
+                <p class="mb-2">
+                    <i class="fa fa-phone-alt me-3"></i>
+                    <a href="tel:+5516991058025" class="text-reset text-decoration-none">
+                        (16) 99105-8025
+                    </a>
+                </p>
+
+                <p class="mb-2">
+                    <i class="fab fa-whatsapp me-3"></i>
+                    <a href="https://wa.me/5516991058025?text=Ol%C3%A1%21%20Vim%20do%20site%20da%20Ferriso%20Isolamentos%20e%20gostaria%20de%20iniciar%20contato."
+                        target="_blank" rel="noopener"
+                        class="text-reset text-decoration-none">
+                        (16) 99105-8025
+                    </a>
+                </p>
+
+
+                <p class="mb-2">
+                    <i class="fa fa-envelope me-3"></i>
+                    <a
+                        href="mailto:contato@ferrisoisolamentos.com.br?subject=Contato%20via%20site&body=Ol%C3%A1,%20vim%20do%20site%20da%20Ferriso%20Isolamentos%20e%20gostaria%20de%20iniciar%20contato."
+                        target="_blank" rel="noopener"
+                        class="text-reset text-decoration-none">
+                        contato@ferrisoisolamentos.com.br
+                    </a>
+                </p>
+
+
+                <!--
+                REDES SOCIAIS (ADICIONAR QUANDO TIVER)
                 <div class="d-flex pt-2">
                     <a class="btn btn-square btn-outline-secondary rounded-circle me-1" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-square btn-outline-secondary rounded-circle me-1" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-square btn-outline-secondary rounded-circle me-1" href=""><i class="fab fa-youtube"></i></a>
                     <a class="btn btn-square btn-outline-secondary rounded-circle me-0" href=""><i class="fab fa-linkedin-in"></i></a>
                 </div>
+                -->
             </div>
-            <div class="col-lg-2 col-md-6">
-                <h5 class="text-light mb-4">Links Rápidos</h5>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4 hover-vermelho">Links Rápidos</h5>
                 <a class="btn btn-link" href="sobre.php">Sobre</a>
                 <a class="btn btn-link" href="contato.php">Contato</a>
-                <a class="btn btn-link" href="areas.php">Áreas de Atuação</a>
-                <a class="btn btn-link" href="">Política de Privacidade</a>
+                <a class="btn btn-link" href="privacidade.php">Política de Privacidade</a>
+                <a class="btn btn-link" href="admin/login.php">Painel Administrativo</a>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-light mb-4">Gallery</h5>
-                <div class="row g-2">
-                    <div class="col-4">
-                        <img class="img-fluid rounded" src="img/project-1.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid rounded" src="img/project-2.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid rounded" src="img/project-3.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid rounded" src="img/project-4.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid rounded" src="img/project-5.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid rounded" src="img/project-6.jpg" alt="Image">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-light mb-4">Fique por dentro</h5>
+
+            <!-- NewsLetter -->
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-light mb-4 hover-vermelho">Fique por dentro</h5>
                 <p>Receba em seu e-mail informações das tendências do mercado de isolamento térmico.</p>
-                <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control bg-transparent border-secondary w-100 py-3 ps-4 pe-5" type="text" placeholder="Informe seu e-mail">
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
-                </div>
+
+                <form id="newsletterForm" action="/newsletter/subscribe.php" method="post"
+                    class="position-relative mx-auto" style="max-width: 400px;">
+                    <label for="nl-email" class="visually-hidden">E-mail</label>
+                    <input id="nl-email" name="email" type="email"
+                        class="form-control bg-transparent border-secondary w-100 py-3 ps-4 pe-5"
+                        placeholder="Informe seu e-mail" required>
+                    <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">
+                        Enviar
+                    </button>
+
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" id="nl-consent" name="agree" required>
+                        <label class="form-check-label text-light" for="nl-consent">
+                            Concordo em receber e-mails da Ferriso. Li a
+                            <a href="/privacidade.php" class="text-decoration-underline">Política de Privacidade</a>.
+                        </label>
+                    </div>
+                </form>
             </div>
+            <!-- NewsLetter -->
+
         </div>
     </div>
     <div class="container-fluid copyright">
@@ -68,6 +99,81 @@
     </div>
 </div>
 <!-- Footer End -->
+
+<!-- Modal NewsLetter -->
+<div class="modal fade" id="nlModal" tabindex="-1" aria-labelledby="nlModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="nlModalLabel"><i class="fa fa-envelope me-3"></i> Newsletter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const form     = document.getElementById('newsletterForm');
+  const submitBt = form.querySelector('button[type="submit"]');
+  const modalEl  = document.getElementById('nlModal');
+  const modal    = new bootstrap.Modal(modalEl);
+  const modalBody= modalEl.querySelector('.modal-body');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    submitBt.disabled = true;
+
+    try {
+      const fd = new FormData(form);
+      const res = await fetch(form.action, { method: 'POST', body: fd });
+      const msg = await res.text();
+
+      modalBody.textContent = msg || (res.ok ? 'Solicitação processada.' : 'Não foi possível enviar.');
+      modal.show();
+
+      if (res.ok) form.reset();
+    } catch (err) {
+      modalBody.textContent = 'Falha de comunicação. Tente novamente.';
+      modal.show();
+    } finally {
+      submitBt.disabled = false;
+    }
+  });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const params = new URLSearchParams(location.search);
+  const nl = params.get('nl');
+  if (!nl) return;
+
+  const msgs = {
+    confirmed: 'Inscrição confirmada! Obrigado por assinar nossa newsletter.',
+    invalid:   'Link inválido ou já utilizado.',
+    unsub:     'Você foi descadastrado com sucesso.'
+  };
+
+  if (msgs[nl]) {
+    const modalEl   = document.getElementById('nlModal');
+    const modalBody = modalEl.querySelector('.modal-body');
+    modalBody.textContent = msgs[nl];
+    new bootstrap.Modal(modalEl).show();
+
+    // limpa o parâmetro da URL após exibir
+    params.delete('nl');
+    const clean = location.pathname + (location.hash || '');
+    history.replaceState({}, '', clean);
+  }
+});
+</script>
+<!-- Modal NewsLetter -->
+
 
 
 <!-- Back to Top -->

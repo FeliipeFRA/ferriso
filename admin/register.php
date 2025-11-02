@@ -15,7 +15,7 @@
 
   <form action="/config/auth_register.php" method="post" novalidate>
   <input type="hidden" name="csrf" value="<?php
-    require_once __DIR__.'/php_init.php'; echo htmlspecialchars(csrf_token(), ENT_QUOTES); ?>">
+    require_once __DIR__.'/config/php_init.php'; echo htmlspecialchars(csrf_token(), ENT_QUOTES); ?>">
   <input name="nome" type="text" required>
   <input name="login" type="text" required>
   <input name="senha" type="password" required>

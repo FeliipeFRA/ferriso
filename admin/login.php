@@ -384,7 +384,7 @@
       <section class="card__body">
         <form action="/config/auth_login.php" method="post" novalidate>
           <input type="hidden" name="csrf" value="<?php
-                                                  require_once __DIR__ . 'config/php_init.php';
+                                                  require_once __DIR__ . '/config/php_init.php';
                                                   echo htmlspecialchars(csrf_token(), ENT_QUOTES); ?>">
           <!-- campos existentes: -->
           <div class="field">
