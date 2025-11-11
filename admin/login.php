@@ -1,3 +1,5 @@
+<?php require_once __DIR__ . '/config/php_init.php'; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -34,6 +36,7 @@
 
       --card-bg: rgba(255, 255, 255, .04);
       --input-bg: rgba(255, 255, 255, .03);
+
       --border: rgba(255, 255, 255, .12);
       --focus: 0 0 0 3px rgba(43, 119, 229, .35), 0 0 0 1px rgba(255, 255, 255, .18) inset;
       --radius: 14px;
@@ -382,15 +385,13 @@
       </header>
 
       <section class="card__body">
-        <form action="/config/auth_login.php" method="post" novalidate>
-          <input type="hidden" name="csrf" value="<?php
-                                                  require_once __DIR__ . '/config/php_init.php';
-                                                  echo htmlspecialchars(csrf_token(), ENT_QUOTES); ?>">
-          <!-- campos existentes: -->
+        <form id="loginForm" action="/admin/config/auth_login.php" method="post" novalidate>
+          <input type="hidden" name="csrf" value="<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES); ?>">
+
           <div class="field">
             <label for="usuario">Usuário</label>
             <div class="control">
-              <input id="usuario" name="usuario" type="text" inputmode="text" placeholder="seu usuário"
+              <input id="usuario" name="usuario" type="text" placeholder="seu usuário"
                 autocomplete="username" required />
             </div>
           </div>
@@ -400,18 +401,7 @@
             <div class="control">
               <input id="password" name="password" type="password" placeholder="••••••••"
                 autocomplete="current-password" required />
-              <button class="toggle-pass" type="button" aria-label="Mostrar/ocultar senha" aria-pressed="false">
-                <svg class="icon-eye" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                  fill="currentColor" aria-hidden="true">
-                  <path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                <svg class="icon-eye-off" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                  fill="currentColor" aria-hidden="true" style="display:none">
-                  <path
-                    d="M3 4.27 4.28 3l17 17L20 21.73l-2.38-2.39A12.1 12.1 0 0 1 12 19C5 19 1 12 1 12a21.5 21.5 0 0 1 6.22-6.49L3 4.27ZM12 7a5 5 0 0 1 5 5c0 .64-.12 1.25-.34 1.81l-1.5-1.5a3 3 0 0 0-3.47-3.47l-1.5-1.5c.56-.22 1.17-.34 1.81-.34Zm0 10c1.54 0 2.95-.45 4.2-1.18l-2.02-2.02a3 3 0 0 1-4-4L8.18 7.8A19.1 19.1 0 0 0 3.3 12S6.8 17 12 17Z" />
-                </svg>
-              </button>
+              <!-- seu botão de mostrar/ocultar senha pode ficar aqui -->
             </div>
           </div>
 
@@ -421,10 +411,9 @@
           </button>
 
           <div class="hint">Inovação com a Força da Experiência</div>
-          <input name="usuario" type="text" required>
-          <input name="password" type="password" required>
-          <button type="submit">Entrar</button>
         </form>
+
+
       </section>
     </main>
   </div>
@@ -462,6 +451,66 @@
       if (sp) sp.classList.remove('show');
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function() {
+      const form = document.getElementById('loginForm');
+      const btn = document.getElementById('btnSubmit');
+
+      function showMsg(text) {
+        document.getElementById('msgText').textContent = text;
+        const m = new bootstrap.Modal(document.getElementById('msgModal'));
+        m.show();
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.classList.add('loading');
+        btn.disabled = true;
+
+        try {
+          const resp = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            credentials: 'same-origin',
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+          const data = await resp.json();
+          if (data.ok) {
+            window.location.href = data.redirect || '/admin/layout.php';
+          } else {
+            showMsg(data.error || 'Falha ao entrar.');
+          }
+        } catch (err) {
+          showMsg('Erro de conexão. Tente novamente.');
+        } finally {
+          btn.classList.remove('loading');
+          btn.disabled = false;
+        }
+      });
+    })();
+  </script>
+
+
+  <div class="modal fade" id="msgModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background:#0f1724;color:#fff">
+        <div class="modal-header">
+          <h5 class="modal-title">Aviso</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p id="msgText" class="mb-0"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-light" data-bs-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>
