@@ -3,7 +3,8 @@ define('IMG_FALLBACK', '/img/padrao.jpg');      // imagem padrão
 define('UPLOADS_BASE', '/img');            // URL base pública
 define('UPLOADS_DIR',  $_SERVER['DOCUMENT_ROOT'] . UPLOADS_BASE); // caminho físico
 
-function img_url(?string $path): string {
+function img_url(?string $path): string
+{
     if (!$path) return IMG_FALLBACK;
 
     $rel = ltrim($path, '/');
@@ -14,7 +15,6 @@ function img_url(?string $path): string {
         return is_readable($fs) ? '/' . $rel : IMG_FALLBACK;
     }
 
-    $file = basename($rel);
-    $fs   = UPLOADS_DIR . '/' . $file;
-    return is_readable($fs) ? UPLOADS_BASE . '/' . $file : IMG_FALLBACK;
+    $fs = UPLOADS_DIR . '/' . $rel;          // respeita subpastas "areas/..."
+    return is_readable($fs) ? UPLOADS_BASE . '/' . $rel : IMG_FALLBACK;
 }

@@ -17,6 +17,18 @@ $stmt = $con->prepare("
 $stmt->execute();
 $res = $stmt->get_result();
 $areas = $res->fetch_all(MYSQLI_ASSOC);
+
+// query projetos
+$stmtp = $con->prepare("
+  SELECT id, titulo, cliente, localizacao, data_projeto, resumo, capa_img
+  FROM projetos
+  WHERE ativo = 1 AND destaque = 1
+  ORDER BY titulo ASC
+");
+$stmtp->execute();
+$resp = $stmtp->get_result();
+$proj = $resp->fetch_all(MYSQLI_ASSOC);
+
 $active = 'home';
 
 ini_set('display_errors', 1);
@@ -36,7 +48,7 @@ error_reporting(E_ALL);
                 <img class="img-fluid" src="img/carousel-1.png" alt="Image">
             </button>
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="1" aria-label="Slide 2">
-                <img class="img-fluid" src="img/carousel-2.png" alt="Image">
+                <img class="img-fluid" src="img/carousel-2.jpg" alt="Image">
             </button>
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2" aria-label="Slide 3">
                 <img class="img-fluid" src="img/carousel-3.png" alt="Image">
@@ -53,7 +65,7 @@ error_reporting(E_ALL);
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="img/carousel-2.png" alt="Image">
+                <img class="w-100" src="img/carousel-2.jpg" alt="Image">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-4 animated zoomIn">TRAZEMOS</h4>
@@ -86,7 +98,7 @@ error_reporting(E_ALL);
 <!-- Carousel End -->
 
 
-<!-- Informacoes -->
+<!-- Informacoes Start-->
 <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-3">
@@ -124,16 +136,17 @@ error_reporting(E_ALL);
         </div>
     </div>
 </div>
-<!-- Informacoes -->
+<!-- Informacoes End-->
 
 
-<!-- Sobre -->
+
 <div class="container-xxl py-5">
+    <!-- Sobre Start-->
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="img-border">
-                    <img class="img-fluid" src="img/about.jpeg" alt="">
+                    <img class="img-fluid" src="img/about.jpg" alt="">
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -146,14 +159,86 @@ error_reporting(E_ALL);
             </div>
         </div>
     </div>
+    <!-- Sobre End-->
+
+    <!-- Diferenciais Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="h-100">
+                        <h6 class="section-title bg-white text-start text-primary pe-3">POR QUE NOS ESCOLHER?</h6>
+                        <h1 class="display-6 mb-4">Conheça Nossos Diferenciais!</h1>
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <div class="skill">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2"><strong>Experiência De Campo</strong></p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="skill">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2"><strong>Equipe Técnica Especializada</strong></p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="skill">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2"><strong>Compromisso Com Segurança</strong></p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="skill">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2"><strong>Planejamento E Cumprimento De Prazos</strong></p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="skill">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2"><strong>Atendimento Próximo E Flexível</strong></p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="img-border">
+                        <img class="img-fluid" src="img/diferenciais.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Diferenciais End -->
 </div>
-<!-- Sobre -->
 
 
 
 <div class="container-xxl py-5">
 
-    <!-- Areas de Atuação -->
+    <!-- Areas de Atuação Start-->
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <h6 class="section-title bg-white text-center text-primary px-3">ÁREAS DE ATUAÇÃO</h6>
@@ -174,154 +259,28 @@ error_reporting(E_ALL);
             <?php endforeach; ?>
         </div>
     </div>
-    <!-- Areas de Atuação -->
-
-
-    <!-- Feature Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="h-100">
-                        <h6 class="section-title bg-white text-start text-primary pe-3">Why Choose Us</h6>
-                        <h1 class="display-6 mb-4">Why People Trust Us? Learn About Us!</h1>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                        <div class="row g-4">
-                            <div class="col-12">
-                                <div class="skill">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="mb-2">Digital Marketing</p>
-                                        <p class="mb-2">85%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="skill">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="mb-2">SEO & Backlinks</p>
-                                        <p class="mb-2">90%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="skill">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="mb-2">Design & Development</p>
-                                        <p class="mb-2">95%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="img-border">
-                        <img class="img-fluid" src="img/feature.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Feature End -->
-
+    <!-- Areas de Atuação End-->
 
     <!-- Project Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h6 class="section-title bg-white text-center text-primary px-3">Our Projects</h6>
-                <h1 class="display-6 mb-4">Learn More About Our Complete Projects</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">PORTIFÓLIO</h6>
+                <h1 class="display-6 mb-4">Saiba Mais Sobre Nossos Projetos</h1>
             </div>
             <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="project-item border rounded h-100 p-4" data-dot="01">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded" src="img/project-1.jpg" alt="">
-                        <a href="img/project-1.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+                <?php foreach ($proj as $idx => $p): ?>
+                    <div class="project-item border rounded h-100 p-4" data-dot="01">
+                        <div class="position-relative mb-4">
+                            <img class="img-fluid rounded" src="img/project-1.jpg" alt="">
+                            <a href="img/project-1.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+                        </div>
+                        <h6><?= htmlspecialchars($p['titulo']) ?></h6>
+                        <span><?= htmlspecialchars($p['resumo']) ?></span>
+                        <span><small><i class="fa fa-location-dot"></i><?= htmlspecialchars($p['localizacao']) ?></small></span>
                     </div>
-                    <h6>UI / UX Design</h6>
-                    <span>Digital agency website design and development</span>
-                </div>
-                <div class="project-item border rounded h-100 p-4" data-dot="02">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded" src="img/project-2.jpg" alt="">
-                        <a href="img/project-2.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                    </div>
-                    <h6>UI / UX Design</h6>
-                    <span>Digital agency website design and development</span>
-                </div>
-                <div class="project-item border rounded h-100 p-4" data-dot="03">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded" src="img/project-3.jpg" alt="">
-                        <a href="img/project-2.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                    </div>
-                    <h6>UI / UX Design</h6>
-                    <span>Digital agency website design and development</span>
-                </div>
-                <div class="project-item border rounded h-100 p-4" data-dot="04">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded" src="img/project-4.jpg" alt="">
-                        <a href="img/project-4.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                    </div>
-                    <h6>UI / UX Design</h6>
-                    <span>Digital agency website design and development</span>
-                </div>
-                <div class="project-item border rounded h-100 p-4" data-dot="05">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded" src="img/project-5.jpg" alt="">
-                        <a href="img/project-5.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                    </div>
-                    <h6>UI / UX Design</h6>
-                    <span>Digital agency website design and development</span>
-                </div>
-                <div class="project-item border rounded h-100 p-4" data-dot="06">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded" src="img/project-6.jpg" alt="">
-                        <a href="img/project-6.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                    </div>
-                    <h6>UI / UX Design</h6>
-                    <span>Digital agency website design and development</span>
-                </div>
-                <div class="project-item border rounded h-100 p-4" data-dot="07">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded" src="img/project-7.jpg" alt="">
-                        <a href="img/project-7.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                    </div>
-                    <h6>UI / UX Design</h6>
-                    <span>Digital agency website design and development</span>
-                </div>
-                <div class="project-item border rounded h-100 p-4" data-dot="08">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded" src="img/project-8.jpg" alt="">
-                        <a href="img/project-8.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                    </div>
-                    <h6>UI / UX Design</h6>
-                    <span>Digital agency website design and development</span>
-                </div>
-                <div class="project-item border rounded h-100 p-4" data-dot="09">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded" src="img/project-9.jpg" alt="">
-                        <a href="img/project-9.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                    </div>
-                    <h6>UI / UX Design</h6>
-                    <span>Digital agency website design and development</span>
-                </div>
-                <div class="project-item border rounded h-100 p-4" data-dot="10">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded" src="img/project-10.jpg" alt="">
-                        <a href="img/project-10.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                    </div>
-                    <h6>UI / UX Design</h6>
-                    <span>Digital agency website design and development</span>
-                </div>
+                <?php endforeach; ?>
+
             </div>
         </div>
     </div>
@@ -390,12 +349,12 @@ error_reporting(E_ALL);
     <!-- Team End -->
 
 
-    <!-- Testimonial Start -->
+    <!-- Avaliações Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
-                <h1 class="display-6 mb-4">What Our Clients Say!</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">AVALIAÇÕES</h6>
+                <h1 class="display-6 mb-4">Feedbacks Dos Nossos Clientes!</h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                 <div class="testimonial-item bg-light rounded p-4">
