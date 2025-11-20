@@ -235,34 +235,42 @@ error_reporting(E_ALL);
 </div>
 
 
-
-<div class="container-xxl py-5">
-
+<?php if (!empty($areas)): ?>
+    <div class="container-xxl py-5">
     <!-- Areas de Atuação Start-->
-    <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h6 class="section-title bg-white text-center text-primary px-3">ÁREAS DE ATUAÇÃO</h6>
-            <h1 class="display-6 mb-4">Isolamento De Qualidade Para Diversos Setores</h1>
-        </div>
+    
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h6 class="section-title bg-white text-center text-primary px-3">ÁREAS DE ATUAÇÃO</h6>
+                <h1 class="display-6 mb-4">Isolamento De Qualidade Para Diversos Setores</h1>
+            </div>
 
-        <div class="row g-4">
+            <div class="row g-4">
 
-            <?php $delays = ['0.1s', '0.3s', '0.5s']; ?>
-            <?php foreach ($areas as $idx => $a): ?>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="<?= $delays[$idx % 3] ?>">
-                    <div class="service-item d-block rounded text-center h-100 p-4" href="">
-                        <img class="img-fluid rounded mb-4" src="<?= htmlspecialchars(img_url(($a['capa_img']))) ?>" alt="<?= htmlspecialchars($a['nome']) ?>">
-                        <h4 class="mb-0"><?= htmlspecialchars($a['nome']) ?> </h4>
-                        <p style="margin-top: 1rem;"><?= htmlspecialchars($a['resumo']) ?></p>
+                <?php $delays = ['0.1s', '0.3s', '0.5s']; ?>
+                <?php foreach ($areas as $idx => $a): ?>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="<?=  ?> $delays[$idx % 3] ?>">
+                        <div class="service-item d-block rounded text-center h-100 p-4" href="">
+                            <img class="img-fluid rounded mb-4" src="<?=  ?> htmlspecialchars(img_url($a['capa_img'])) ?>" alt="<?=  ?> htmlspecialchars($a['nome']) ?>">
+                            <h4 class="mb-0"><?=  ?> htmlspecialchars($a['nome']) ?> </h4>
+                            <p style="margin-top: 1rem;"><?=  ?> htmlspecialchars($a['resumo']) ?></p>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="text-center mx-auto mb-5 wow fadeInUp py-5" data-wow-delay="0.1s" style="max-width: 600px;">
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/areas.php">VEJA MAIS</a>
+            </div>
         </div>
+
     </div>
+    <?php endif; ?>
     <!-- Areas de Atuação End-->
 
     <!-- Project Start -->
-    <div class="container-xxl py-5">
+    <?php if (!empty($proj)): ?>
+    <div class="container-xxl py-2">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h6 class="section-title bg-white text-center text-primary px-3">PORTIFÓLIO</h6>
@@ -284,6 +292,7 @@ error_reporting(E_ALL);
             </div>
         </div>
     </div>
+    <?php endif; ?>
     <!-- Project End -->
 
 
