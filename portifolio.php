@@ -1,115 +1,67 @@
 <?php
-$active = "portifolio"
+$active = "portifolio";
+$bannerImg = "img/headers/portifolio.jpg";
+
+// conexão
+require_once __DIR__ . '/config/db.php';
+require_once __DIR__ . '/config/config.php';
+
+// query projetos home
+$stmtp = $con->prepare("
+  SELECT id, titulo, cliente, localizacao, data_projeto, resumo, capa_img
+  FROM projetos
+  WHERE ativo = 1
+  ORDER BY titulo ASC
+");
+$stmtp->execute();
+$resp = $stmtp->get_result();
+$proj = $resp->fetch_all(MYSQLI_ASSOC);
+
 ?>
 
 <?php require __DIR__ . '/partials/header.php'; ?>
-<!-- Page Header Start -->
-<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+
+<!-- Page Header -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn"
+    data-wow-delay="0.1s"
+    style="background:
+              linear-gradient(rgba(0,44,83,.55), rgba(0,44,83,.55)),
+              url('<?= htmlspecialchars($bannerImg) ?>') center center / cover no-repeat;">
     <div class="container text-center py-5">
-        <h1 class="display-4 text-white animated slideInDown mb-3">Projects</h1>
-        <nav aria-label="breadcrumb animated slideInDown">
-            <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-primary active" aria-current="page">Projects</li>
-            </ol>
-        </nav>
+        <h1 class="display-4 text-white animated slideInDown mb-3">Portifólio</h1>
     </div>
 </div>
-<!-- Page Header End -->
+<!-- Page Header -->
 
 
 <!-- Project Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h6 class="section-title bg-white text-center text-primary px-3">Our Projects</h6>
-            <h1 class="display-6 mb-4">Learn More About Our Complete Projects</h1>
-        </div>
-        <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="project-item border rounded h-100 p-4" data-dot="01">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="img/project-1.jpg" alt="">
-                    <a href="img/project-1.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                </div>
-                <h6>UI / UX Design</h6>
-                <span>Digital agency website design and development</span>
+<?php if (!empty($proj)): ?>
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h6 class="section-title bg-white text-center text-primary px-3">PORTIFÓLIO</h6>
+                <h1 class="display-6 mb-4">Saiba Mais Sobre Nossos Projetos</h1>
             </div>
-            <div class="project-item border rounded h-100 p-4" data-dot="02">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="img/project-2.jpg" alt="">
-                    <a href="img/project-2.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                </div>
-                <h6>UI / UX Design</h6>
-                <span>Digital agency website design and development</span>
-            </div>
-            <div class="project-item border rounded h-100 p-4" data-dot="03">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="img/project-3.jpg" alt="">
-                    <a href="img/project-2.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                </div>
-                <h6>UI / UX Design</h6>
-                <span>Digital agency website design and development</span>
-            </div>
-            <div class="project-item border rounded h-100 p-4" data-dot="04">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="img/project-4.jpg" alt="">
-                    <a href="img/project-4.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                </div>
-                <h6>UI / UX Design</h6>
-                <span>Digital agency website design and development</span>
-            </div>
-            <div class="project-item border rounded h-100 p-4" data-dot="05">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="img/project-5.jpg" alt="">
-                    <a href="img/project-5.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                </div>
-                <h6>UI / UX Design</h6>
-                <span>Digital agency website design and development</span>
-            </div>
-            <div class="project-item border rounded h-100 p-4" data-dot="06">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="img/project-6.jpg" alt="">
-                    <a href="img/project-6.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                </div>
-                <h6>UI / UX Design</h6>
-                <span>Digital agency website design and development</span>
-            </div>
-            <div class="project-item border rounded h-100 p-4" data-dot="07">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="img/project-7.jpg" alt="">
-                    <a href="img/project-7.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                </div>
-                <h6>UI / UX Design</h6>
-                <span>Digital agency website design and development</span>
-            </div>
-            <div class="project-item border rounded h-100 p-4" data-dot="08">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="img/project-8.jpg" alt="">
-                    <a href="img/project-8.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                </div>
-                <h6>UI / UX Design</h6>
-                <span>Digital agency website design and development</span>
-            </div>
-            <div class="project-item border rounded h-100 p-4" data-dot="09">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="img/project-9.jpg" alt="">
-                    <a href="img/project-9.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                </div>
-                <h6>UI / UX Design</h6>
-                <span>Digital agency website design and development</span>
-            </div>
-            <div class="project-item border rounded h-100 p-4" data-dot="10">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="img/project-10.jpg" alt="">
-                    <a href="img/project-10.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                </div>
-                <h6>UI / UX Design</h6>
-                <span>Digital agency website design and development</span>
+            <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <?php foreach ($proj as $idx => $p): ?>
+                    <div class="project-item border rounded h-100 p-4" data-dot="<?= htmlspecialchars($idx + 1) ?>">
+                        <div class="position-relative mb-4">
+                            <img class="img-fluid rounded" src="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" alt="<?= htmlspecialchars($p['titulo']) ?>">
+                            <a href="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+                        </div>
+                        <h6><?= htmlspecialchars($p['titulo']) ?></h6>
+                        <span><?= htmlspecialchars($p['resumo']) ?></span><br>
+                        <div class="pt-2">
+                            <span><small><strong><i class="fa fa-user"></i> <?= htmlspecialchars($p['cliente']) ?></strong></small></span><br>
+                            <span><small><i class="fa fa-map-marker-alt"></i> <?= htmlspecialchars($p['localizacao']) ?></small></span>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+
             </div>
         </div>
     </div>
-</div>
+<?php endif; ?>
 <!-- Project End -->
 
 

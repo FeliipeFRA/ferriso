@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/config/db.php';
 require_once __DIR__ . '/config/config.php';
 
-// query dados area de atuacao
+// query dados area de atuacao home
 $stmt = $con->prepare("
   SELECT id, nome, resumo, capa_img
   FROM areas_atuacao
@@ -18,7 +18,7 @@ $stmt->execute();
 $res = $stmt->get_result();
 $areas = $res->fetch_all(MYSQLI_ASSOC);
 
-// query projetos
+// query projetos home
 $stmtp = $con->prepare("
   SELECT id, titulo, cliente, localizacao, data_projeto, resumo, capa_img
   FROM projetos
@@ -29,7 +29,7 @@ $stmtp->execute();
 $resp = $stmtp->get_result();
 $proj = $resp->fetch_all(MYSQLI_ASSOC);
 
-// query produtos
+// query produtos home
 $stmtpo = $con->prepare("
   SELECT id, nome, resumo, capa_img
   FROM produtos
@@ -41,11 +41,6 @@ $respo = $stmtpo->get_result();
 $prod = $respo->fetch_all(MYSQLI_ASSOC);
 
 $active = 'home';
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 ?>
 
 <?php require __DIR__ . '/partials/header.php'; ?>
@@ -290,22 +285,25 @@ error_reporting(E_ALL);
             </div>
             <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
                 <?php foreach ($proj as $idx => $p): ?>
-                    <div class="project-item border rounded h-100 p-4" data-dot="<?= htmlspecialchars($idx) ?>">
-                        <div class="position-relative mb-4">
-                            <img class="img-fluid rounded" src="img/project-1.jpg" alt="">
-                            <a href="img/project-1.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+                    <div class="project-item border rounded h-100 p-4 d-flex flex-column" data-dot="<?= htmlspecialchars($idx + 1) ?>">
+                        <div class="position-relative mb-4 project-thumb">
+                            <img class="img-fluid rounded" src="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" alt="<?= htmlspecialchars($p['titulo']) ?>">
+                            <a href="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
                         </div>
                         <h6><?= htmlspecialchars($p['titulo']) ?></h6>
                         <span><?= htmlspecialchars($p['resumo']) ?></span><br>
-                        <span><small><i class="fab fa-location-dot"></i> <?= htmlspecialchars($p['localizacao']) ?></small></span>
+                        <div class="pt-2 mt-auto">
+                            <span><small><strong><i class="fa fa-user"></i> <?= htmlspecialchars($p['cliente']) ?></strong></small></span><br>
+                            <span><small><i class="fa fa-map-marker-alt"></i> <?= htmlspecialchars($p['localizacao']) ?></small></span>
+                        </div>
                     </div>
                 <?php endforeach; ?>
-
             </div>
+
         </div>
 
         <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
-            <a class="btn btn-primary rounded-pill py-3 px-5" href="/projetoss.php">VEJA MAIS</a>
+            <a class="btn btn-primary rounded-pill py-3 px-5" href="/portifolio.php">VEJA MAIS</a>
         </div>
     </div>
 <?php endif; ?>

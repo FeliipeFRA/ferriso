@@ -21,6 +21,30 @@ body{
 /* .hover-vermelho:hover { color: var(--vermelho-ferriso); } */
 
 
+/* todos os cards com mesma altura dentro do carrossel */
+.project-carousel .owl-item {
+    height: 100% !important;
+}
+
+.project-carousel .project-item {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* mesma altura para todas as imagens de capa */
+.project-carousel .project-thumb {
+    height: 220px !important;        /* ajusta aqui conforme quiser */
+    overflow: hidden !important;
+}
+
+.project-carousel .project-thumb img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;    /* corta a imagem mantendo proporção */
+}
+
+
 .back-to-top {
     position: fixed;
     display: none;
