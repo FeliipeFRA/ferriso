@@ -347,10 +347,23 @@ $active = 'home';
                             </div>
 
                             <div class="team-social">
+                                <?php
+                                $assunto  = 'Solicitação de Orçamento - ' . $pr['nome'];
+                                $mensagem = "Olá, venho através do site institucional solicitar orçamento de item.\n"
+                                    . "Produto: {$pr['nome']}\n"
+                                    . "Quantidade:\n"
+                                    . "Data de entrega desejada:\n"
+                                    . "Observações:\n";
+
+                                $linkOrcamento = '/contato.php?assunto=' . urlencode($assunto)
+                                    . '&mensagem=' . urlencode($mensagem);
+                                ?>
+
                                 <a class="btn btn-primary rounded-pill py-2 px-4"
-                                    href="/contato.php">
-                                    SOLICITAR ORÇAMENTO
+                                    href="<?= htmlspecialchars($linkOrcamento) ?>">
+                                    Solicitar Orçamento
                                 </a>
+
                             </div>
                         </div>
                     </div>

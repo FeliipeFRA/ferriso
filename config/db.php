@@ -11,7 +11,10 @@ $port = 3306;
 try {
     $con = new mysqli($host, $user, $pass, $dbname, $port);
     $con->set_charset('utf8mb4');
-}  catch (mysqli_sql_exception $e) {
+    // ajusta o fuso desta conexão para -03:00
+    mysqli_query($con, "SET time_zone = '-03:00'");
+    
+} catch (mysqli_sql_exception $e) {
     error_log('MySQLi connect error: ' . $e->getMessage());
     http_response_code(500);
     exit('erro ao conectar ao banco.');

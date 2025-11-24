@@ -7,11 +7,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '../config/db.php';
-require_once __DIR__ . '../config/config.php';
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../config/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../contato.php');
+    header('Location: /contato.php');
     exit;
 }
 
@@ -31,6 +31,31 @@ if (!empty($_POST['website'] ?? '')) {
     $errors[] = 'Falha na validação do formulário.';
 }
 
+// reCAPTCHA v2
+$recaptchaResponse = $_POST['g-recaptcha-response'] ?? '';
+
+if ($recaptchaResponse === '') {
+    $errors[] = 'Confirme o reCAPTCHA antes de enviar.';
+} else {
+    $secretKey = '6LfkHxcsAAAAAN6Gh626vWCshd81HeqqycUn3lV8'; // TROCAR
+
+    $remoteIp = $_SERVER['REMOTE_ADDR'] ?? '';
+    $url = 'https://www.google.com/recaptcha/api/siteverify'
+         . '?secret=' . urlencode($secretKey)
+         . '&response=' . urlencode($recaptchaResponse)
+         . '&remoteip=' . urlencode($remoteIp);
+
+    $verify = file_get_contents($url);
+    if ($verify === false) {
+        $errors[] = 'Não foi possível validar o reCAPTCHA. Tente novamente.';
+    } else {
+        $captchaResult = json_decode($verify, true);
+        if (empty($captchaResult['success'])) {
+            $errors[] = 'Falha na validação do reCAPTCHA.';
+        }
+    }
+}
+
 // dados básicos
 $nome     = trim($_POST['nome']     ?? '');
 $email    = trim($_POST['email']    ?? '');
@@ -38,7 +63,6 @@ $telefone = trim($_POST['telefone'] ?? '');
 $assunto  = trim($_POST['assunto']  ?? '');
 $mensagem = trim($_POST['mensagem'] ?? '');
 $origem   = trim($_POST['origem']   ?? 'Site - Página de Contato');
-$captcha  = trim($_POST['captcha']  ?? '');
 
 // limita tamanho para caber na tabela
 $nome     = mb_substr($nome,     0, 120);
@@ -63,12 +87,6 @@ if ($mensagem === '' || mb_strlen($mensagem) < 10) {
 if ($telefone !== '' && !preg_match('/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/', $telefone)) {
     $errors[] = 'Informe um telefone válido no formato (16) 99999-9999.';
 }
-
-// captcha
-if (!isset($_SESSION['captcha']) || (int)$captcha !== (int)$_SESSION['captcha']) {
-    $errors[] = 'Resposta do captcha incorreta.';
-}
-unset($_SESSION['captcha']);
 
 // se deu erro, volta para o formulário
 if (!empty($errors)) {

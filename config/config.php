@@ -2,6 +2,7 @@
 define('IMG_FALLBACK', '/img/padrao.jpg');      // imagem padrão
 define('UPLOADS_BASE', '/img');            // URL base pública
 define('UPLOADS_DIR',  $_SERVER['DOCUMENT_ROOT'] . UPLOADS_BASE); // caminho físico
+date_default_timezone_set('America/Sao_Paulo');
 
 function img_url(?string $path): string
 {

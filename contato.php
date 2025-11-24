@@ -9,16 +9,23 @@ $old             = $_SESSION['contact_old']     ?? [];
 $success_message = $_SESSION['contact_success'] ?? null;
 unset($_SESSION['contact_errors'], $_SESSION['contact_old'], $_SESSION['contact_success']);
 
+// valores iniciais dos campos (podem vir de sessão ou da URL)
+$prefill_assunto  = $old['assunto']  ?? '';
+$prefill_mensagem = $old['mensagem'] ?? '';
+
+// se não veio nada da sessão, usa o que estiver na URL (?assunto=&mensagem=)
+if ($prefill_assunto === '' && isset($_GET['assunto'])) {
+    $prefill_assunto = mb_substr(trim($_GET['assunto']), 0, 150);
+}
+if ($prefill_mensagem === '' && isset($_GET['mensagem'])) {
+    $prefill_mensagem = mb_substr(trim($_GET['mensagem']), 0, 2000);
+}
+
 // CSRF token
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 $csrf_token = $_SESSION['csrf_token'];
-
-// Captcha simples (soma)
-$captcha_a = random_int(1, 9);
-$captcha_b = random_int(1, 9);
-$_SESSION['captcha'] = $captcha_a + $captcha_b;
 
 // dados da página
 $active    = "contato";
@@ -88,8 +95,7 @@ $bannerImg = "img/headers/contato.jpg";
                                     placeholder="Seu nome"
                                     required
                                     maxlength="120"
-                                    value="<?= htmlspecialchars($old['nome'] ?? '') ?>"
-                                >
+                                    value="<?= htmlspecialchars($old['nome'] ?? '') ?>">
                                 <label for="nome">Seu nome *</label>
                             </div>
                         </div>
@@ -103,8 +109,7 @@ $bannerImg = "img/headers/contato.jpg";
                                     placeholder="Seu e-mail"
                                     required
                                     maxlength="150"
-                                    value="<?= htmlspecialchars($old['email'] ?? '') ?>"
-                                >
+                                    value="<?= htmlspecialchars($old['email'] ?? '') ?>">
                                 <label for="email">Seu e-mail *</label>
                             </div>
                         </div>
@@ -118,8 +123,7 @@ $bannerImg = "img/headers/contato.jpg";
                                     placeholder="(16) 99999-9999"
                                     maxlength="50"
                                     data-mask="phone"
-                                    value="<?= htmlspecialchars($old['telefone'] ?? '') ?>"
-                                >
+                                    value="<?= htmlspecialchars($old['telefone'] ?? '') ?>">
                                 <label for="telefone">Telefone / WhatsApp</label>
                             </div>
                         </div>
@@ -132,24 +136,9 @@ $bannerImg = "img/headers/contato.jpg";
                                     name="assunto"
                                     placeholder="Assunto"
                                     maxlength="150"
-                                    value="<?= htmlspecialchars($old['assunto'] ?? '') ?>"
-                                >
-                                <label for="assunto">Assunto</label>
-                            </div>
-                        </div>
-
-                        <!-- Captcha -->
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input
-                                    type="number"
-                                    class="form-control"
-                                    id="captcha"
-                                    name="captcha"
-                                    placeholder="Quanto é <?= $captcha_a ?> + <?= $captcha_b ?>?"
                                     required
-                                >
-                                <label for="captcha">Quanto é <?= $captcha_a ?> + <?= $captcha_b ?>? *</label>
+                                    value="<?= htmlspecialchars($prefill_assunto) ?>">
+                                <label for="assunto">Assunto</label>
                             </div>
                         </div>
 
@@ -161,9 +150,15 @@ $bannerImg = "img/headers/contato.jpg";
                                     id="mensagem"
                                     name="mensagem"
                                     style="height: 200px"
-                                    required
-                                ><?= htmlspecialchars($old['mensagem'] ?? '') ?></textarea>
+                                    required><?= htmlspecialchars($prefill_mensagem) ?></textarea>
                                 <label for="mensagem">Mensagem *</label>
+                            </div>
+                        </div>
+
+                        <!-- reCAPTCHA -->
+                        <div class="col-12">
+                            <div class="d-flex justify-content-center">
+                                <div class="g-recaptcha" data-sitekey="6LfkHxcsAAAAABYes2PjIM-iubpuIv9fVMN6WOAT"></div>
                             </div>
                         </div>
                         <div class="col-12 text-center">
@@ -188,25 +183,26 @@ $bannerImg = "img/headers/contato.jpg";
 </div>
 <!-- Google Maps End -->
 
-<!-- Máscara simples de telefone -->
+<!-- reCAPTCHA e máscara de telefone -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
-document.addEventListener('input', function (e) {
-    if (e.target.matches('input[data-mask="phone"]')) {
-        let v = e.target.value.replace(/\D/g, '');
+    document.addEventListener('input', function(e) {
+        if (e.target.matches('input[data-mask="phone"]')) {
+            let v = e.target.value.replace(/\D/g, '');
 
-        if (v.length > 11) v = v.slice(0, 11);
+            if (v.length > 11) v = v.slice(0, 11);
 
-        if (v.length > 6) {
-            e.target.value = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
-        } else if (v.length > 2) {
-            e.target.value = '(' + v.slice(0, 2) + ') ' + v.slice(2);
-        } else if (v.length > 0) {
-            e.target.value = '(' + v;
-        } else {
-            e.target.value = '';
+            if (v.length > 6) {
+                e.target.value = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
+            } else if (v.length > 2) {
+                e.target.value = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+            } else if (v.length > 0) {
+                e.target.value = '(' + v;
+            } else {
+                e.target.value = '';
+            }
         }
-    }
-});
+    });
 </script>
 
 <?php require __DIR__ . '/partials/footer.php'; ?>
