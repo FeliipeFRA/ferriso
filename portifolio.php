@@ -8,7 +8,7 @@ require_once __DIR__ . '/config/config.php';
 
 // query projetos home
 $stmtp = $con->prepare("
-  SELECT id, titulo, cliente, localizacao, data_projeto, resumo, capa_img
+  SELECT id, titulo, cliente, localizacao, data_projeto, descricao, capa_img
   FROM projetos
   WHERE ativo = 1
   ORDER BY titulo ASC
@@ -42,80 +42,57 @@ $proj = $resp->fetch_all(MYSQLI_ASSOC);
                 <h6 class="section-title bg-white text-center text-primary px-3">PORTIFÓLIO</h6>
                 <h1 class="display-6 mb-4">Saiba Mais Sobre Nossos Projetos</h1>
             </div>
-            <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <?php foreach ($proj as $idx => $p): ?>
-                    <div class="project-item border rounded h-100 p-4" data-dot="<?= htmlspecialchars($idx + 1) ?>">
-                        <div class="position-relative mb-4">
-                            <img class="img-fluid rounded" src="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" alt="<?= htmlspecialchars($p['titulo']) ?>">
-                            <a href="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
-                        </div>
-                        <h6><?= htmlspecialchars($p['titulo']) ?></h6>
-                        <span><?= htmlspecialchars($p['resumo']) ?></span><br>
-                        <div class="pt-2">
-                            <span><small><strong><i class="fa fa-user"></i> <?= htmlspecialchars($p['cliente']) ?></strong></small></span><br>
-                            <span><small><i class="fa fa-map-marker-alt"></i> <?= htmlspecialchars($p['localizacao']) ?></small></span>
+
+            <?php foreach ($proj as $idx => $p):
+                // alterna lado no desktop
+                $imgOrder  = ($idx % 2 === 0) ? '' : 'order-lg-2';
+                $textOrder = ($idx % 2 === 0) ? '' : 'order-lg-1';
+            ?>
+                <div class="row g-5 align-items-center project-row mb-5">
+
+                    <!-- IMAGEM -->
+                    <div class="col-lg-6 <?= $imgOrder ?> wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="img-border project-img">
+                            <a href="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" data-lightbox="project-<?= (int)$p['id'] ?>">
+                                <img class="img-fluid"
+                                    src="<?= htmlspecialchars(img_url($p['capa_img'])) ?>"
+                                    alt="<?= htmlspecialchars($p['titulo']) ?>">
+                            </a>
                         </div>
                     </div>
-                <?php endforeach; ?>
 
-            </div>
+                    <!-- TEXTO -->
+                    <div class="col-lg-6 <?= $textOrder ?> wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="h-100 d-flex flex-column">
+                            <h6 class="section-title bg-white text-start text-primary pe-3">PROJETO</h6>
+                            <h1 class="display-6 mb-3"><?= htmlspecialchars($p['titulo']) ?></h1>
+
+                            <p class="mb-4"><?= $p['descricao'] ?></p>
+
+                            <div class="project-meta mt-auto">
+                                <p class="mb-1">
+                                    <small><strong><i class="fa fa-user"></i> <?= htmlspecialchars($p['cliente']) ?></strong></small>
+                                </p>
+                                <p class="mb-1">
+                                    <small><i class="fa fa-map-marker-alt"></i> <?= htmlspecialchars($p['localizacao']) ?></small>
+                                </p>
+                                <?php if (!empty($p['data_projeto'])): ?>
+                                    <p class="mb-0">
+                                        <small><i class="fa fa-calendar"></i> <?= htmlspecialchars(date('m/Y', strtotime($p['data_projeto']))) ?></small>
+                                    </p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            <?php endforeach; ?>
+
+
         </div>
     </div>
 <?php endif; ?>
 <!-- Project End -->
 
-
-<!-- Testimonial Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
-            <h1 class="display-6 mb-4">What Our Clients Say!</h1>
-        </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="testimonial-item bg-light rounded p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-1.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-            <div class="testimonial-item bg-light rounded p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-2.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-            <div class="testimonial-item bg-light rounded p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-3.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-            <div class="testimonial-item bg-light rounded p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-4.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Testimonial End -->
 
 <?php require __DIR__ . '/partials/footer.php'; ?>

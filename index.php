@@ -34,11 +34,24 @@ $stmtpo = $con->prepare("
   SELECT id, nome, resumo, capa_img
   FROM produtos
   WHERE ativo = 1 AND destaque = 1
-  ORDER BY nome ASC
+  ORDER BY categoria AND nome
 ");
 $stmtpo->execute();
 $respo = $stmtpo->get_result();
 $prod = $respo->fetch_all(MYSQLI_ASSOC);
+
+// query avaliações home
+$stmta = $con->prepare("
+  SELECT a.id, a.projeto_id, a.nome_cliente, a.empresa, a.titulo, a.comentario, a.criado_em,
+         p.titulo AS projeto_titulo, p.capa_img AS projeto_img
+  FROM avaliacoes a
+  LEFT JOIN projetos p ON p.id = a.projeto_id
+  WHERE a.ativo = 1 AND a.destaque = 1
+  ORDER BY a.criado_em DESC, a.id DESC
+");
+$stmta->execute();
+$resa = $stmta->get_result();
+$avaliacoes = $resa->fetch_all(MYSQLI_ASSOC);
 
 $active = 'home';
 ?>
@@ -250,25 +263,22 @@ $active = 'home';
                 <h1 class="display-6 mb-4">Isolamento De Qualidade Para Diversos Setores</h1>
             </div>
 
-            <div class="row g-4">
-
-                <?php $delays = ['0.1s', '0.3s', '0.5s']; ?>
-                <?php foreach ($areas as $idx => $a): ?>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="<?= htmlspecialchars($delays[$idx % 3]) ?>">
-                        <div class="service-item d-block rounded text-center h-100 p-4">
-                            <img
-                                class="img-fluid rounded mb-4"
-                                src="<?= htmlspecialchars(img_url($a['capa_img'])) ?>"
-                                alt="<?= htmlspecialchars($a['nome']) ?>">
-                            <h4 class="mb-0"><?= htmlspecialchars($a['nome']) ?></h4>
-                            <p style="margin-top: 1rem;"><?= htmlspecialchars($a['resumo']) ?></p>
-                        </div>
+            <div class="owl-carousel areas-carousel nav-sides wow fadeInUp" data-wow-delay="0.1s">
+                <?php foreach ($areas as $a): ?>
+                    <div class="service-item d-block rounded text-center h-100 p-4">
+                        <img
+                            class="img-fluid rounded mb-4"
+                            src="<?= htmlspecialchars(img_url($a['capa_img'])) ?>"
+                            alt="<?= htmlspecialchars($a['nome']) ?>">
+                        <h4 class="mb-0"><?= htmlspecialchars($a['nome']) ?></h4>
+                        <p style="margin-top: 1rem;"><?= htmlspecialchars($a['resumo']) ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
 
+
             <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
-                <a class="btn btn-primary rounded-pill py-3 px-5" href="/areas.php">VEJA MAIS</a>
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/areas.php">VEJA MAIS SETORES</a>
             </div>
         </div>
     </div>
@@ -283,7 +293,7 @@ $active = 'home';
                 <h6 class="section-title bg-white text-center text-primary px-3">PORTIFÓLIO</h6>
                 <h1 class="display-6 mb-4">Saiba Mais Sobre Nossos Projetos</h1>
             </div>
-            <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
+            <div class="owl-carousel project-carousel nav-sides wow fadeInUp" data-wow-delay="0.1s">
                 <?php foreach ($proj as $idx => $p): ?>
                     <div class="project-item border rounded h-100 p-4 d-flex flex-column" data-dot="<?= htmlspecialchars($idx + 1) ?>">
                         <div class="position-relative mb-4 project-thumb">
@@ -300,10 +310,13 @@ $active = 'home';
                 <?php endforeach; ?>
             </div>
 
-        </div>
+            <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/portifolio.php">
+                    VEJA MAIS PROJETOS
+                </a>
+            </div>
 
-        <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
-            <a class="btn btn-primary rounded-pill py-3 px-5" href="/portifolio.php">VEJA MAIS</a>
+
         </div>
     </div>
 <?php endif; ?>
@@ -311,135 +324,134 @@ $active = 'home';
 
 
 <!-- Produtos Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h6 class="section-title bg-white text-center text-primary px-3">NOSSOS PRODUTOS</h6>
-            <h1 class="display-6 mb-4">Tudo Que Você Precisa Para Sua Obra</h1>
-        </div>
-        <div class="row g-4">
+<?php if (!empty($prod)): ?>
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h6 class="section-title bg-white text-center text-primary px-3">NOSSOS PRODUTOS</h6>
+                <h1 class="display-6 mb-4">Tudo Que Você Precisa Para Sua Obra</h1>
+            </div>
 
-            <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <?php foreach ($proj as $idx => $p): ?>
-                    <div class="project-item border rounded h-100 p-4" data-dot="01">
-                        <div class="position-relative mb-4">
-                            <img class="img-fluid rounded" src="img/project-1.jpg" alt="">
-                            <a href="img/project-1.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+
+            <div class="owl-carousel produtos-carousel nav-sides wow fadeInUp" data-wow-delay="0.1s">
+                <?php foreach ($prod as $pr): ?>
+                    <div class="team-item text-center p-4 h-100 d-flex flex-column">
+                        <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
+                            src="<?= htmlspecialchars(img_url($pr['capa_img'])) ?>"
+                            alt="<?= htmlspecialchars($pr['nome']) ?>">
+
+                        <div class="team-text">
+                            <div class="team-title">
+                                <h5><?= htmlspecialchars($pr['nome']) ?></h5>
+                                <span><?= htmlspecialchars($pr['resumo']) ?></span>
+                            </div>
+
+                            <div class="team-social">
+                                <a class="btn btn-primary rounded-pill py-2 px-4"
+                                    href="/contato.php">
+                                    SOLICITAR ORÇAMENTO
+                                </a>
+                            </div>
                         </div>
-                        <h6><?= htmlspecialchars($p['titulo']) ?></h6>
-                        <span><?= htmlspecialchars($p['resumo']) ?></span><br>
-                        <span><small><i class="fab fa-location-dot"></i> <?= htmlspecialchars($p['localizacao']) ?></small></span>
                     </div>
                 <?php endforeach; ?>
-
             </div>
 
+            <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/produtos.php">
+                    VEJA MAIS PRODUTOS
+                </a>
+            </div>
 
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item text-center p-4">
-                    <img class="img-fluid border rounded-circle w-75 p-2 mb-4" src="img/team-1.jpg" alt="">
-                    <div class="team-text">
-                        <div class="team-title">
-                            <h5>Full Name</h5>
-                            <span>Designation</span>
-                        </div>
-                        <div class="team-social">
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="team-item text-center p-4">
-                    <img class="img-fluid border rounded-circle w-75 p-2 mb-4" src="img/team-2.jpg" alt="">
-                    <div class="team-text">
-                        <div class="team-title">
-                            <h5>Full Name</h5>
-                            <span>Designation</span>
-                        </div>
-                        <div class="team-social">
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="team-item text-center p-4">
-                    <img class="img-fluid border rounded-circle w-75 p-2 mb-4" src="img/team-3.jpg" alt="">
-                    <div class="team-text">
-                        <div class="team-title">
-                            <h5>Full Name</h5>
-                            <span>Designation</span>
-                        </div>
-                        <div class="team-social">
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-</div>
+<?php endif; ?>
 <!-- Produtos End -->
 
 
 <!-- Avaliações Start -->
+<?php if (!empty($avaliacoes)): ?>
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h6 class="section-title bg-white text-center text-primary px-3">AVALIAÇÕES</h6>
+                <h1 class="display-6 mb-4">Feedbacks Dos Nossos Clientes</h1>
+            </div>
+
+            <div class="owl-carousel testimonial-carousel nav-sides wow fadeInUp" data-wow-delay="0.1s">
+                <?php foreach ($avaliacoes as $av):
+                    $avatar = !empty($av['projeto_img'])
+                        ? img_url($av['projeto_img'])
+                        : 'img/testimonial-default.jpg';
+                ?>
+                    <div class="testimonial-item bg-light rounded p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <img class="flex-shrink-0 rounded-circle border p-1"
+                                src="<?= htmlspecialchars($avatar) ?>"
+                                alt="<?= htmlspecialchars($av['nome_cliente']) ?>">
+
+                            <div class="ms-4">
+                                <h5 class="mb-1"><?= htmlspecialchars($av['nome_cliente']) ?></h5>
+                                <span><?= htmlspecialchars($av['empresa']) ?></span>
+                            </div>
+                        </div>
+
+                        <?php if (!empty($av['titulo'])): ?>
+                            <h6 class="mb-2"><?= htmlspecialchars($av['titulo']) ?></h6>
+                        <?php endif; ?>
+
+                        <p class="mb-0"><?= nl2br(htmlspecialchars($av['comentario'])) ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/avaliacoes.php">
+                    VEJA MAIS AVALIAÇÕES
+                </a>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<!-- Avaliações End -->
+
+<!-- Contato CTA Start -->
 <div class="container-xxl py-5">
     <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h6 class="section-title bg-white text-center text-primary px-3">AVALIAÇÕES</h6>
-            <h1 class="display-6 mb-4">Feedbacks Dos Nossos Clientes!</h1>
-        </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="testimonial-item bg-light rounded p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-1.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="img-border">
+                    <img class="img-fluid" src="img/contato-cta.jpg" alt="Fale Conosco">
                 </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
             </div>
-            <div class="testimonial-item bg-light rounded p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-2.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
+
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="h-100">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">CONTATO</h6>
+                    <h1 class="display-6 mb-4">Fale com a Ferriso</h1>
+                    <p>
+                        Mande suas dúvidas ou pedidos que entraremos em contato com você assim que possível.
+                        Se preferir, descreva sua necessidade e nossa equipe retorna com a melhor solução para sua obra.
+                    </p>
+
+                    <a class="btn btn-primary rounded-pill py-3 px-5" href="/contato.php">
+                        ENTRAR EM CONTATO
+                    </a>
                 </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-            <div class="testimonial-item bg-light rounded p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-3.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-            <div class="testimonial-item bg-light rounded p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-4.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
             </div>
         </div>
     </div>
 </div>
+<!-- Contato CTA End -->
+
+<!-- Google Maps Start -->
+<div class="container-xxl pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
+    <iframe class="w-100 mb-n2" style="height: 450px;"
+
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d215137.5357972604!2d-48.085099632693364!3d-21.19385152942496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spt-BR!2sbr!4v1757015914132!5m2!1spt-BR!2sbr"
+        frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 </div>
-<!-- Testimonial End -->
+<!-- Google Maps End -->
+
 <?php require __DIR__ . '/partials/footer.php'; ?>

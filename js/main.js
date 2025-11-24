@@ -10,8 +10,8 @@
         }, 1);
     };
     spinner();
-    
-    
+
+
     // Initiate the wowjs
     new WOW().init();
 
@@ -24,8 +24,8 @@
             $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
         }
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -35,7 +35,7 @@
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
         return false;
     });
 
@@ -52,31 +52,49 @@
         $('.progress .progress-bar').each(function () {
             $(this).css("width", $(this).attr("aria-valuenow") + '%');
         });
-    }, {offset: '80%'});
+    }, { offset: '80%' });
 
 
-    // Project carousel
+    $(".areas-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        margin: 25,
+        loop: true,
+        dots: false,
+        nav: true,
+        navText: [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ],
+        responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } }
+    });
+
     $(".project-carousel").owlCarousel({
         autoplay: true,
         smartSpeed: 1000,
         margin: 25,
         loop: true,
-        dots: true,
-        dotsData: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            },
-            1200:{
-                items:4
-            }
-        }
+        dots: false,
+        nav: true,
+        navText: [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ],
+        responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 }, 1200: { items: 4 } }
+    });
+
+    $(".produtos-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        margin: 25,
+        loop: true,
+        dots: false,
+        nav: true,
+        navText: [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ],
+        responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } }
     });
 
 
@@ -89,23 +107,23 @@
         center: true,
         dots: false,
         nav: true,
-        navText : [
+        navText: [
             '<i class="bi bi-chevron-left"></i>',
             '<i class="bi bi-chevron-right"></i>'
         ],
         responsive: {
-            0:{
-                items:1
+            0: {
+                items: 1
             },
-            768:{
-                items:2
+            768: {
+                items: 2
             },
-            992:{
-                items:3
+            992: {
+                items: 3
             }
         }
     });
 
-    
+
 })(jQuery);
 
