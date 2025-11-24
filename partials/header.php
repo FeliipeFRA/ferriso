@@ -5,6 +5,41 @@ ini_set('display_errors', 1);
 
 // variaveis
 $active = $active ?? '';
+
+// garante conexão com o banco, se ainda não existir
+if (!isset($con)) {
+    $dbPath = __DIR__ . '/../config/db.php';
+    $cfgPath = __DIR__ . '/../config/config.php';
+
+    if (file_exists($cfgPath)) {
+        require_once $cfgPath;
+    }
+    if (file_exists($dbPath)) {
+        require_once $dbPath;
+    }
+}
+
+try {
+    if (isset($con) && $con instanceof mysqli) {
+        // conta projetos ativos
+        if ($res = $con->query("SELECT COUNT(*) AS total FROM projetos WHERE ativo = 1")) {
+            $row = $res->fetch_assoc();
+            $show_portifolio = ((int)$row['total'] > 0);
+            $res->free();
+        }
+
+        // conta avaliações ativas
+        if ($res2 = $con->query("SELECT COUNT(*) AS total FROM avaliacoes WHERE ativo = 1")) {
+            $row2 = $res2->fetch_assoc();
+            $show_avaliacoes = ((int)$row2['total'] > 0);
+            $res2->free();
+        }
+    }
+} catch (Throwable $e) {
+    // em caso de erro de conexão/consulta, não esconde nada
+    $show_portifolio = true;
+    $show_avaliacoes = true;
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +86,7 @@ $active = $active ?? '';
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet" >
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
@@ -172,12 +207,16 @@ $active = $active ?? '';
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav me-auto p-3 p-lg-0">
-                <a href="index.php" class="nav-item nav-link <?= $active==='home'?'active':'' ?>">Início</a>
-                <a href="sobre.php" class="nav-item nav-link <?= $active==='sobre'?'active':'' ?>">Sobre</a>
-                <a href="portifolio.php" class="nav-item nav-link <?= $active==='portifolio'?'active':'' ?>">Portifólio</a>
-                <a href="areas.php" class="nav-item nav-link <?= $active==='areas'?'active':'' ?>">Serviços</a>
-                <a href="produtos.php" class="nav-item nav-link <?= $active==='produtos'?'active':'' ?>">Produtos</a>
-                <a href="avaliacoes.php" class="nav-item nav-link <?= $active==='avaliacoes'?'active':'' ?>">Avaliações</a>
+                <a href="index.php" class="nav-item nav-link <?= $active === 'home' ? 'active' : '' ?>">Início</a>
+                <a href="sobre.php" class="nav-item nav-link <?= $active === 'sobre' ? 'active' : '' ?>">Sobre</a>
+                <?php if ($show_portifolio): ?>
+                    <a href="portifolio.php" class="nav-item nav-link <?= $active === 'portifolio' ? 'active' : '' ?>">Portifólio</a>
+                <?php endif; ?>
+                <a href="areas.php" class="nav-item nav-link <?= $active === 'areas' ? 'active' : '' ?>">Serviços</a>
+                <a href="produtos.php" class="nav-item nav-link <?= $active === 'produtos' ? 'active' : '' ?>">Produtos</a>
+                <?php if ($show_avaliacoes): ?>
+                    <a href="avaliacoes.php" class="nav-item nav-link <?= $active === 'avaliacoes' ? 'active' : '' ?>">Avaliações</a>
+                <?php endif; ?>
                 <!-- mobile -->
                 <a href="contato.php" class="nav-item nav-link d-block d-lg-none">Contato</a>
             </div>
