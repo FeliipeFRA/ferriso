@@ -64,7 +64,7 @@ $proj = $resp->fetch_all(MYSQLI_ASSOC);
                     <!-- TEXTO -->
                     <div class="col-lg-6 <?= $textOrder ?> wow fadeInUp" data-wow-delay="0.3s">
                         <div class="h-100 d-flex flex-column">
-                            <h6 class="section-title bg-white text-start text-primary pe-3">PROJETO</h6>
+                            <h6 class="section-title bg-white text-start text-primary">PROJETO</h6>
                             <h1 class="display-6 mb-3"><?= htmlspecialchars($p['titulo']) ?></h1>
 
                             <p class="mb-4"><?= $p['descricao'] ?></p>

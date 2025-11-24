@@ -11,7 +11,7 @@ require_once __DIR__ . '/config/config.php';
 $stmt = $con->prepare("
   SELECT id, nome, resumo, capa_img
   FROM areas_atuacao
-  WHERE destaque = 1
+  WHERE ativo = 1 AND destaque = 1
   ORDER BY nome ASC
 ");
 $stmt->execute();
@@ -64,18 +64,18 @@ $active = 'home';
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                <img class="img-fluid" src="img/carousel-1.png" alt="Image">
+                <img class="img-fluid" src="img/carousel-1.jpg" alt="Image">
             </button>
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="1" aria-label="Slide 2">
                 <img class="img-fluid" src="img/carousel-2.jpg" alt="Image">
             </button>
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2" aria-label="Slide 3">
-                <img class="img-fluid" src="img/carousel-3.png" alt="Image">
+                <img class="img-fluid" src="img/carousel-3.jpg" alt="Image">
             </button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="w-100" src="img/carousel-1.png" alt="Image">
+                <img class="w-100" src="img/carousel-1.jpg" alt="Image">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-4 animated zoomIn">NÓS OFERECEMOS</h4>
@@ -93,7 +93,7 @@ $active = 'home';
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="img/carousel-3.png" alt="Image">
+                <img class="w-100" src="img/carousel-3.jpg" alt="Image">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-4 animated zoomIn">CRESCEMOS COM</h4>

@@ -1,6 +1,6 @@
 <?php
 $active = 'sobre';
-$bannerImg = "img/headers/diferenciais.jpg";
+$bannerImg = "img/headers/produtos.jpg";
 ?>
 
 <?php require __DIR__ . '/partials/header.php'; ?>
