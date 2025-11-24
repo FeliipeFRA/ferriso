@@ -7,7 +7,7 @@
     --vermelho-ferriso: #ff0f11;
 }
 
-body{
+body {
     font-family: "Open Sans", sans-serif !important;
 }
 
@@ -34,14 +34,16 @@ body{
 
 /* mesma altura para todas as imagens de capa */
 .project-carousel .project-thumb {
-    height: 220px !important;        /* ajusta aqui conforme quiser */
+    height: 220px !important;
+    /* ajusta aqui conforme quiser */
     overflow: hidden !important;
 }
 
 .project-carousel .project-thumb img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;    /* corta a imagem mantendo proporção */
+    object-fit: cover !important;
+    /* corta a imagem mantendo proporção */
 }
 
 
@@ -463,14 +465,14 @@ body{
 
 
 .team-item img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* dá uma folga entre a imagem e o título */
 .team-item .team-title {
-  margin-top: 6px;
+    margin-top: 6px;
 }
 
 
@@ -658,80 +660,81 @@ a:hover {
    mantém teu card perfeito
    ========================= */
 
-.produtos-carousel .owl-item{
-  height: 100%;
-  display: flex;
+.produtos-carousel .owl-item {
+    height: 100%;
+    display: flex;
 }
 
-.produtos-carousel .team-item{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.produtos-carousel .team-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.produtos-carousel .team-item img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.produtos-carousel .team-item img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* desliga o absolute/altura fixa do template só nos produtos */
-.produtos-carousel .team-item .team-text{
-  position: static !important;
-  height: auto !important;
-  overflow: visible !important;
+.produtos-carousel .team-item .team-text {
+    position: static !important;
+    height: auto !important;
+    overflow: visible !important;
 
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding-top: 6px;
-  gap: 12px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-top: 6px;
+    gap: 12px;
 }
 
-.produtos-carousel .team-item .team-title{
-  position: static !important;
-  height: auto !important;
-  display: block !important;
-  transition: none !important;
+.produtos-carousel .team-item .team-title {
+    position: static !important;
+    height: auto !important;
+    display: block !important;
+    transition: none !important;
 }
 
-.produtos-carousel .team-item .team-title span{
-  display: block !important;
-  white-space: normal !important;
+.produtos-carousel .team-item .team-title span {
+    display: block !important;
+    white-space: normal !important;
 }
 
 /* botão no fundo e hover desktop */
-.produtos-carousel .team-item .team-social{
-  position: static !important;
-  height: auto !important;
-  background: transparent !important;
+.produtos-carousel .team-item .team-social {
+    position: static !important;
+    height: auto !important;
+    background: transparent !important;
 
-  margin-top: auto;
-  min-height: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    margin-top: auto;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  opacity: 0;
-  transform: translateY(6px);
-  pointer-events: none;
-  transition: .3s ease;
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+    transition: .3s ease;
 }
 
-.produtos-carousel .team-item:hover .team-social{
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+.produtos-carousel .team-item:hover .team-social {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 /* setas padrão abaixo (mesmo estilo das avaliações) */
 .areas-carousel .owl-nav,
 .project-carousel .owl-nav,
-.produtos-carousel .owl-nav{
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
+.produtos-carousel .owl-nav,
+.Pprodutos-carousel .owl-nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 .areas-carousel .owl-nav .owl-prev,
@@ -739,17 +742,19 @@ a:hover {
 .project-carousel .owl-nav .owl-prev,
 .project-carousel .owl-nav .owl-next,
 .produtos-carousel .owl-nav .owl-prev,
-.produtos-carousel .owl-nav .owl-next{
-  margin: 0 12px;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #DEE2E6;
-  border-radius: 50px;
-  font-size: 18px;
-  transition: .5s;
+.produtos-carousel .owl-nav .owl-next,
+.Pprodutos-carousel .owl-nav .owl-prev,
+.Pprodutos-carousel .owl-nav .owl-next {
+    margin: 0 12px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #DEE2E6;
+    border-radius: 50px;
+    font-size: 18px;
+    transition: .5s;
 }
 
 .areas-carousel .owl-nav .owl-prev:hover,
@@ -757,141 +762,180 @@ a:hover {
 .project-carousel .owl-nav .owl-prev:hover,
 .project-carousel .owl-nav .owl-next:hover,
 .produtos-carousel .owl-nav .owl-prev:hover,
-.produtos-carousel .owl-nav .owl-next:hover{
-  color: #FFFFFF;
-  border-color: var(--primary);
-  background: var(--primary);
+.produtos-carousel .owl-nav .owl-next:hover {
+    color: #FFFFFF;
+    border-color: var(--primary);
+    background: var(--primary);
 }
 
 /* =========================
    PROJETOS: cards mesma altura
    ========================= */
 .project-carousel .owl-stage {
-  display: flex;
+    display: flex;
 }
+
 .project-carousel .owl-item {
-  display: flex;
-  height: auto;
+    display: flex;
+    height: auto;
 }
+
 .project-carousel .project-item {
-  height: 100% !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
+    height: 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 /* garante thumb com altura fixa (você já tinha) */
 .project-carousel .project-thumb {
-  height: 220px !important;
-  overflow: hidden !important;
+    height: 220px !important;
+    overflow: hidden !important;
 }
+
 .project-carousel .project-thumb img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
 }
 
 /* =========================
    PRODUTOS: cards mesma altura
    ========================= */
 .produtos-carousel .owl-stage {
-  display: flex;
+    display: flex;
 }
+
 .produtos-carousel .owl-item {
-  display: flex;
-  height: auto;
+    display: flex;
+    height: auto;
 }
+
 .produtos-carousel .team-item {
-  height: 100% !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
+    height: 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .testimonial-carousel .owl-nav {
-  display: flex !important;
-  justify-content: center !important;
-  margin-top: 30px !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 30px !important;
 }
 
 /* Portifólio em linha inteira estilo CTA */
-.project-row{
-  background: #fff;
-  border: 1px solid #DEE2E6;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 0 25px rgba(0,0,0,.05);
+.project-row {
+    background: #fff;
+    border: 1px solid #DEE2E6;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 0 25px rgba(0, 0, 0, .05);
 }
 
 /* deixa a imagem no padrão CTA mas um pouco menor */
-.project-row .img-border{
-  min-height: 320px;
+.project-row .img-border {
+    min-height: 320px;
 }
 
-.project-row .img-border::before{
-  right: 2rem;
-  bottom: 2rem;
+.project-row .img-border::before {
+    right: 2rem;
+    bottom: 2rem;
 }
 
 /* mobile: empilha e reduz altura */
-@media (max-width: 991.98px){
-  .project-row{
-    padding: 1.25rem;
-  }
-  .project-row .img-border{
-    min-height: 240px;
-  }
+@media (max-width: 991.98px) {
+    .project-row {
+        padding: 1.25rem;
+    }
+
+    .project-row .img-border {
+        min-height: 240px;
+    }
 }
 
 /* rótulo simples "PROJETO" sem linhas */
-.project-kicker{
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  font-size: .85rem;
-  margin-bottom: .5rem;
-  display: inline-block;
-  position: relative;
+.project-kicker {
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-size: .85rem;
+    margin-bottom: .5rem;
+    display: inline-block;
+    position: relative;
 }
 
 /* espaçamento entre projetos */
-.project-row{
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+.project-row {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 /* primeiro projeto não colar no título */
-.project-row:first-of-type{
-  margin-top: 3rem;
+.project-row:first-of-type {
+    margin-top: 3rem;
 }
 
 /* menos padding interno */
-.project-row{
-  padding: 1.5rem;
+.project-row {
+    padding: 1.5rem;
 }
 
+/* Página de produtos – todos os cards com mesma altura */
+.Pprodutos-carousel .owl-stage {
+    display: flex;
+}
+
+.Pprodutos-carousel .owl-item {
+    display: flex;
+    height: auto;
+}
+
+.Pprodutos-carousel .produto-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+    /* “levemente maiores” */
+}
+
+/* área da imagem com altura fixa */
+.Pprodutos-carousel .produto-thumb {
+    height: 220px;
+    overflow: hidden;
+}
+
+.Pprodutos-carousel .produto-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
 /* mobile mais compacto ainda */
-@media (max-width: 991.98px){
-  .project-row{
-    padding: 1rem;
-  }
+@media (max-width: 991.98px) {
+    .project-row {
+        padding: 1rem;
+    }
 }
 
 
 /* mobile: botão sempre visível */
-@media (max-width: 768px){
-  .produtos-carousel .team-item .team-social{
-    opacity: 1 !important;
-    transform: none !important;
-    pointer-events: auto !important;
-  }
+@media (max-width: 768px) {
+    .produtos-carousel .team-item .team-social {
+        opacity: 1 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+    }
 }
 
-.areas-carousel .owl-item{
-  height: 100%;
-  display: flex;
+.areas-carousel .owl-item {
+    height: 100%;
+    display: flex;
 }
-.areas-carousel .service-item{
-  height: 100%;
-  width: 100%;
+
+.areas-carousel .service-item {
+    height: 100%;
+    width: 100%;
 }

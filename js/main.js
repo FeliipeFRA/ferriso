@@ -97,6 +97,34 @@
         responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } }
     });
 
+    // Produtos Pag carousel
+    $(".Pprodutos-carousel").owlCarousel({
+        autoplay: false,
+        smartSpeed: 800,
+        margin: 25,
+        loop: true,
+        nav: true,
+        dots: true,
+        navText: [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ],
+        responsive: {
+            0: {
+                items: 1
+            },
+            768: {
+                items: 2
+            },
+            992: {
+                items: 3
+            },
+            1200: {
+                items: 4
+            }
+        }
+    });
+
 
     // Testimonials carousel
     $(".testimonial-carousel").owlCarousel({

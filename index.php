@@ -426,7 +426,6 @@ $active = 'home';
         </div>
     </div>
 <?php endif; ?>
-
 <!-- Avaliações End -->
 
 <!-- Contato CTA Start -->
