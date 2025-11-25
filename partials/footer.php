@@ -54,7 +54,7 @@
                 <a class="btn btn-link" href="sobre.php">Sobre</a>
                 <a class="btn btn-link" href="contato.php">Contato</a>
                 <a class="btn btn-link" href="privacidade.php">Política de Privacidade</a>
-                <a class="btn btn-link" href="admin/login.php">Painel Administrativo</a>
+                <a class="btn btn-link" href="admin/login.php" rel="nofollow noopener">Painel Administrativo</a>
             </div>
 
             <!-- NewsLetter -->

@@ -1,8 +1,10 @@
+User-agent: *
 Allow: /
 
 Disallow: /admin/
 Disallow: /painel/
 Disallow: /control/
+Disallow: /login
 Disallow: /phpmyadmin/
 Disallow: /vendor/
 Disallow: /node_modules/
@@ -21,4 +23,4 @@ Disallow: /search
 Disallow: /*.sql$
 Disallow: /*.zip$
 
-Sitemap: https://www.ferrisoisolamentos.com.br/sitemap.xml
+Sitemap: https://ferrisoisolamentos.com.br/sitemap.xml

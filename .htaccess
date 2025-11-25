@@ -1,1 +1,18 @@
+# ---- Segurança e canônico ----
+RewriteEngine On
+
+# Forçar HTTPS + sem www (ajuste se quiser com www)
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.ferrisoisolamentos\.com\.br$ [NC]
+RewriteRule ^ https://ferrisoisolamentos.com.br%{REQUEST_URI} [L,R=301]
+
+# Sua 404
 ErrorDocument 404 /404.php
+
+# ---- Noindex por cabeçalho p/ áreas sensíveis ----
+# /admin, /painel, /login (e seus subcaminhos)
+RewriteRule ^(admin|painel|login)(/.*)?$ - [E=NOINDEX:1]
+
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive" env=NOINDEX
+</IfModule>
