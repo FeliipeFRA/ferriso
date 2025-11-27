@@ -1,6 +1,6 @@
 <?php
-$active = "portifolio";
-$bannerImg = "img/headers/portifolio.jpg";
+$active = "portfolio";
+$bannerImg = "img/headers/portfolio.jpg";
 
 // conexão
 require_once __DIR__ . '/config/db.php';
@@ -28,7 +28,7 @@ $proj = $resp->fetch_all(MYSQLI_ASSOC);
               linear-gradient(rgba(0,44,83,.55), rgba(0,44,83,.55)),
               url('<?= htmlspecialchars($bannerImg) ?>') center center / cover no-repeat;">
     <div class="container text-center py-5">
-        <h1 class="display-4 text-white animated slideInDown mb-3">Portifólio</h1>
+        <h1 class="display-4 text-white animated slideInDown mb-3">Portfólio</h1>
     </div>
 </div>
 <!-- Page Header -->
@@ -39,7 +39,7 @@ $proj = $resp->fetch_all(MYSQLI_ASSOC);
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h6 class="section-title bg-white text-center text-primary px-3">PORTIFÓLIO</h6>
+                <h6 class="section-title bg-white text-center text-primary px-3">PORTFÓLIO</h6>
                 <h1 class="display-6 mb-4">Saiba Mais Sobre Nossos Projetos</h1>
             </div>
 

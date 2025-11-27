@@ -24,7 +24,7 @@ try {
         // conta projetos ativos
         if ($res = $con->query("SELECT COUNT(*) AS total FROM projetos WHERE ativo = 1")) {
             $row = $res->fetch_assoc();
-            $show_portifolio = ((int)$row['total'] > 0);
+            $show_portfolio = ((int)$row['total'] > 0);
             $res->free();
         }
 
@@ -37,7 +37,7 @@ try {
     }
 } catch (Throwable $e) {
     // em caso de erro de conexão/consulta, não esconde nada
-    $show_portifolio = true;
+    $show_portfolio = true;
     $show_avaliacoes = true;
 }
 ?>
@@ -209,8 +209,8 @@ try {
             <div class="navbar-nav me-auto p-3 p-lg-0">
                 <a href="index.php" class="nav-item nav-link <?= $active === 'home' ? 'active' : '' ?>">Início</a>
                 <a href="sobre.php" class="nav-item nav-link <?= $active === 'sobre' ? 'active' : '' ?>">Sobre</a>
-                <?php if ($show_portifolio): ?>
-                    <a href="portifolio.php" class="nav-item nav-link <?= $active === 'portifolio' ? 'active' : '' ?>">Portifólio</a>
+                <?php if ($show_portfolio): ?>
+                    <a href="portfolio.php" class="nav-item nav-link <?= $active === 'portfolio' ? 'active' : '' ?>">Portfólio</a>
                 <?php endif; ?>
                 <a href="areas.php" class="nav-item nav-link <?= $active === 'areas' ? 'active' : '' ?>">Serviços</a>
                 <a href="produtos.php" class="nav-item nav-link <?= $active === 'produtos' ? 'active' : '' ?>">Produtos</a>

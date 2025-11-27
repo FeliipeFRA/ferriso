@@ -1,19 +1,60 @@
+<?php
+require_once __DIR__ . '/../config/guard.php';
+
+// garante que só entra logado
+guard_require();
+
+$user = guard_user();
+$userNome = $user['nome'] ?? 'Usuário';
+
+// gera iniciais do nome (ex: Felipe Ferreira -> FF)
+function user_initials(string $nome): string {
+    $nome = trim($nome);
+    if ($nome === '') return '?';
+
+    $partes   = preg_split('/\s+/', $nome);
+    $primeiro = $partes[0] ?? '';
+    $ultimo   = $partes[count($partes) - 1] ?? $primeiro;
+
+    if (function_exists('mb_substr')) {
+        $i1 = mb_substr($primeiro, 0, 1, 'UTF-8');
+        $i2 = mb_substr($ultimo,   0, 1, 'UTF-8');
+    } else {
+        $i1 = substr($primeiro, 0, 1);
+        $i2 = substr($ultimo,   0, 1);
+    }
+
+    $iniciais = $i1 . $i2;
+
+    return function_exists('mb_strtoupper')
+        ? mb_strtoupper($iniciais, 'UTF-8')
+        : strtoupper($iniciais);
+}
+
+$userIniciais = user_initials($userNome);
+
+// qual menu está ativo nesta página (dashboard, projetos, produtos, avaliacoes)
+$menu = $menu ?? 'home';
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin - Ferriso Isolações</title>
+  <title>Painel Admin - Ferriso Isolações</title>
 
   <meta name="robots" content="noindex,nofollow">
+
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
   <!-- AdminLTE -->
   <link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
-  <!-- Favicon -->
-  <link href="../../img/favicon.ico" rel="icon">
+  <!-- Favicon (ajuste se o favicon estiver em outro lugar) -->
+  <link href="../img/favicon.ico" rel="icon">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed accent-danger">
@@ -24,13 +65,14 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+          <i class="fas fa-bars"></i>
+        </a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="https://ferrisoisolamentos.com.br" target="_blank" class="nav-link">
+          Ver site
+        </a>
       </li>
     </ul>
 
@@ -45,7 +87,7 @@
           <form class="form-inline">
             <div class="input-group input-group-sm">
               <input class="form-control form-control-navbar bg-navy text-white border-0"
-                     type="search" placeholder="Search" aria-label="Search">
+                     type="search" placeholder="Buscar no painel" aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -59,65 +101,31 @@
         </div>
       </li>
 
-      <!-- Messages Dropdown Menu -->
+      <!-- User / Logout -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#"><i class="far fa-comments"></i><span class="badge badge-danger navbar-badge">3</span></a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <div class="media">
-              <img src="adminlte/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">Brad Diesel <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span></h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-          </a>
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">
+            <?php echo htmlspecialchars($userNome, ENT_QUOTES, 'UTF-8'); ?>
+          </span>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <div class="media">
-              <img src="adminlte/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">John Pierce <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span></h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
+            <i class="fas fa-user-cog mr-2"></i> Perfil
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <div class="media">
-              <img src="adminlte/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">Nora Silvester <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span></h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
+          <a href="/admin/config/logout.php" class="dropdown-item">
+            <i class="fas fa-sign-out-alt mr-2"></i> Sair
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li>
 
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#"><i class="far fa-bell"></i><span class="badge badge-warning navbar-badge">15</span></a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item"><i class="fas fa-envelope mr-2"></i> 4 new messages <span class="float-right text-muted text-sm">3 mins</span></a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item"><i class="fas fa-users mr-2"></i> 8 friend requests <span class="float-right text-muted text-sm">12 hours</span></a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item"><i class="fas fa-file mr-2"></i> 3 new reports <span class="float-right text-muted text-sm">2 days</span></a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
       </li>
-
-      <li class="nav-item"><a class="nav-link" data-widget="fullscreen" href="#" role="button"><i class="fas fa-expand-arrows-alt"></i></a></li>
-      <li class="nav-item"><a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-th-large"></i></a></li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -125,9 +133,11 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-navy bg-navy elevation-4">
     <!-- Brand Logo -->
-    <a href="https://ferrisoisolamentos.com.br" class="brand-link bg-navy">
-      <img src="../../img/logo.png" class="brand-image img-circle elevation-3" style="opacity:.8" alt="Logo">
-      <span class="brand-text text-white">Ferriso Admin</span>
+    <a href="home.php" class="brand-link bg-navy d-flex align-items-center justify-content-center">
+      <img src="../img/logo_admin.png"
+           alt="Ferriso Isolações Térmicas"
+           class="img-fluid"
+           style="max-height:40px;">
     </a>
 
     <!-- Sidebar -->
@@ -135,17 +145,23 @@
       <!-- Sidebar user panel -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <div class="d-flex align-items-center justify-content-center bg-danger text-white rounded-circle"
+               style="width: 36px; height: 36px; font-weight: 600;">
+            <?php echo htmlspecialchars($userIniciais, ENT_QUOTES, 'UTF-8'); ?>
+          </div>
         </div>
         <div class="info">
-          <a href="#" class="d-block">Felipe Ferreira</a>
+          <a href="#" class="d-block">
+            <?php echo htmlspecialchars($userNome, ENT_QUOTES, 'UTF-8'); ?>
+          </a>
         </div>
       </div>
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar bg-navy text-white border-0" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control form-control-sidebar bg-navy text-white border-0"
+                 type="search" placeholder="Buscar" aria-label="Search">
           <div class="input-group-append">
             <button class="btn btn-sidebar bg-navy border-0">
               <i class="fas fa-search fa-fw"></i>
@@ -156,72 +172,50 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar nav-flat nav-compact flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Starter Pages <i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+        <ul class="nav nav-pills nav-sidebar nav-flat nav-compact flex-column"
+            data-widget="treeview" role="menu" data-accordion="false">
+          
+          <!-- Dashboard -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>Simple Link <span class="right badge badge-danger">New</span></p>
+            <a href="home.php"
+               class="nav-link <?php echo $menu === 'home' ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-home"></i>
+              <p>Pagina Inicial</p>
             </a>
           </li>
+
+          <li class="nav-header">Conteúdo do site</li>
+
+          <!-- Projetos -->
+          <li class="nav-item">
+            <a href="projetos_listar.php"
+               class="nav-link <?php echo $menu === 'projetos' ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-hard-hat"></i>
+              <p>Projetos</p>
+            </a>
+          </li>
+
+          <!-- Produtos -->
+          <li class="nav-item">
+            <a href="produtos_listar.php"
+               class="nav-link <?php echo $menu === 'produtos' ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-boxes"></i>
+              <p>Produtos</p>
+            </a>
+          </li>
+
+          <!-- Avaliações -->
+          <li class="nav-item">
+            <a href="avaliacoes_listar.php"
+               class="nav-link <?php echo $menu === 'avaliacoes' ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-comments"></i>
+              <p>Avaliações</p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper -->
-  <div class="content-wrapper">
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6"><h1 class="m-0">Starter Page</h1></div>
-          <div class="col-sm-6"><ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="#">Home</a></li><li class="breadcrumb-item active">Starter Page</li></ol></div>
-        </div>
-      </div>
-    </div>
-
-    <section class="content">
-      <div class="container-fluid">
-        <!-- seu conteúdo aqui -->
-        <div class="card"><div class="card-body">Conteúdo</div></div>
-      </div>
-    </section>
-  </div>
-  <!-- /.content-wrapper -->
-
-  <footer class="main-footer">
-    <strong>&copy; <?php echo date('Y'); ?> Ferriso.</strong> Todos os direitos reservados.
-    <div class="float-right d-none d-sm-inline-block">AdminLTE</div>
-  </footer>
-
-  <aside class="control-sidebar control-sidebar-dark"></aside>
-</div>
-<!-- ./wrapper -->
-
-<!-- Scripts essenciais -->
-<script src="adminlte/plugins/jquery/jquery.min.js"></script>
-<script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="adminlte/dist/js/adminlte.min.js"></script>
-</body>
-</html>

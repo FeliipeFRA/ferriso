@@ -290,7 +290,7 @@ $active = 'home';
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h6 class="section-title bg-white text-center text-primary px-3">PORTIFÓLIO</h6>
+                <h6 class="section-title bg-white text-center text-primary px-3">PORTFÓLIO</h6>
                 <h1 class="display-6 mb-4">Saiba Mais Sobre Nossos Projetos</h1>
             </div>
             <div class="owl-carousel project-carousel nav-sides wow fadeInUp" data-wow-delay="0.1s">
@@ -311,7 +311,7 @@ $active = 'home';
             </div>
 
             <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
-                <a class="btn btn-primary rounded-pill py-3 px-5" href="/portifolio.php">
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/portfolio.php">
                     VEJA MAIS PROJETOS
                 </a>
             </div>
