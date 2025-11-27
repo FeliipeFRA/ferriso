@@ -479,7 +479,7 @@
           });
           const data = await resp.json();
           if (data.ok) {
-            window.location.href = data.redirect || '/admin/layout.php';
+            window.location.href = data.redirect || '/admin/home.php';
           } else {
             showMsg(data.error || 'Falha ao entrar.');
           }

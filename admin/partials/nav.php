@@ -152,7 +152,7 @@ $menu = $menu ?? 'home';
         </div>
         <div class="info">
           <a href="#" class="d-block">
-            <?php echo htmlspecialchars($userNome, ENT_QUOTES, 'UTF-8'); ?>
+            <strong><?php echo htmlspecialchars($userNome, ENT_QUOTES, 'UTF-8'); ?></strong>
           </a>
         </div>
       </div>
@@ -188,7 +188,7 @@ $menu = $menu ?? 'home';
 
           <!-- Projetos -->
           <li class="nav-item">
-            <a href="projetos_listar.php"
+            <a href="projetos.php"
                class="nav-link <?php echo $menu === 'projetos' ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-hard-hat"></i>
               <p>Projetos</p>
@@ -197,7 +197,7 @@ $menu = $menu ?? 'home';
 
           <!-- Produtos -->
           <li class="nav-item">
-            <a href="produtos_listar.php"
+            <a href="produtos.php"
                class="nav-link <?php echo $menu === 'produtos' ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-boxes"></i>
               <p>Produtos</p>
@@ -206,10 +206,19 @@ $menu = $menu ?? 'home';
 
           <!-- Avaliações -->
           <li class="nav-item">
-            <a href="avaliacoes_listar.php"
+            <a href="avaliacoes.php"
                class="nav-link <?php echo $menu === 'avaliacoes' ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-comments"></i>
               <p>Avaliações</p>
+            </a>
+          </li>
+
+          <!-- Contatos -->
+          <li class="nav-item">
+            <a href="contatos.php"
+               class="nav-link <?php echo $menu === 'contatos' ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>Contatos</p>
             </a>
           </li>
 
