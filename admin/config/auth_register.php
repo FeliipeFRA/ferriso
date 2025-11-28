@@ -28,4 +28,4 @@ mysqli_stmt_execute($stmt);
 
 session_regenerate_id(true);
 $_SESSION['user']=['id'=>mysqli_insert_id($con),'nome'=>$nome,'login'=>$login,'role'=>$role];
-redirect('/admin/partials/layout.php');
+redirect('/admin/login.php');

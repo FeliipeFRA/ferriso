@@ -35,7 +35,7 @@ if ($u && (int)$u['ativo'] === 1 && password_verify($senha, $u['senha_hash'])) {
     'login' => $u['login'],
     'role'  => $u['role']
   ];
-  echo json_encode(['ok'=>true,'redirect'=>'/admin/layout.php']); exit;
+  echo json_encode(['ok'=>true,'redirect'=>'/admin/home.php']); exit;
 }
 
 echo json_encode(['ok'=>false,'error'=>'Usuário ou senha inválidos.']); exit;
