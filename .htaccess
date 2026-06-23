@@ -1,6 +1,11 @@
 # ---- Segurança e canônico ----
 RewriteEngine On
 
+# Bloquear acesso direto a configs e artefatos sensiveis
+RewriteRule ^config(/|$) - [F,L]
+RewriteRule (^|/)\.(env|git|svn) - [F,L]
+RewriteRule \.(sql|zip|bak|old|orig|backup)$ - [F,L]
+
 # Forçar HTTPS + sem www (ajuste se quiser com www)
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\.ferrisoisolamentos\.com\.br$ [NC]

@@ -1,0 +1,27 @@
+# Local environment files
+.env
+.env.*
+config/db.local.php
+
+# Database dumps and migration backups
+*.sql
+*.dump
+*.bak
+*.backup
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.7z
+*.rar
+backup/
+backups/
+migration-backups/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
