@@ -23,4 +23,21 @@ Disallow: /search
 Disallow: /*.sql$
 Disallow: /*.zip$
 
+# AI search/on-demand agents can use the public rules above.
+# Training/data crawlers are blocked by default for an ethical opt-out.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
 Sitemap: https://ferrisoisolamentos.com.br/sitemap.xml

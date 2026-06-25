@@ -7,6 +7,227 @@ ini_set('log_errors', '1');
 
 // variaveis
 $active = $active ?? '';
+$siteBaseUrl = 'https://ferrisoisolamentos.com.br';
+$siteName = 'Ferriso Isolações Térmicas';
+$siteShortName = 'Ferriso Isolamentos';
+$siteDescription = 'Soluções de isolamento térmico industrial, revestimentos térmicos e materiais técnicos para obras, manutenção e eficiência energética em Barrinha, Ribeirão Preto e região.';
+$siteKeywords = 'ferriso, ferriso isolamentos, ferriso isolações, isolamento térmico industrial, revestimento térmico, isolantes térmicos, Ribeirão Preto, Barrinha';
+
+$pageMetaByActive = [
+    'home' => [
+        'title' => 'Ferriso Isolações Térmicas | Isolamento térmico industrial',
+        'description' => $siteDescription,
+        'path' => '/',
+        'schema_type' => 'WebPage',
+        'preload_image' => '/img/carousel-1.jpg',
+    ],
+    'sobre' => [
+        'title' => 'Sobre a Ferriso | Experiência em isolamento térmico',
+        'description' => 'Conheça a Ferriso Isolamentos, empresa de Barrinha/SP especializada em soluções de isolamento térmico com experiência de campo, segurança e acompanhamento próximo.',
+        'path' => '/sobre',
+        'schema_type' => 'AboutPage',
+    ],
+    'areas' => [
+        'title' => 'Serviços de isolamento térmico industrial | Ferriso',
+        'description' => 'Veja as áreas de atuação da Ferriso em isolamento térmico para indústrias, obras e manutenção, com foco em eficiência, segurança e durabilidade.',
+        'path' => '/areas',
+        'schema_type' => 'CollectionPage',
+    ],
+    'produtos' => [
+        'title' => 'Produtos para isolamento térmico e revestimento | Ferriso',
+        'description' => 'Conheça produtos técnicos para isolamento térmico, revestimentos metálicos, fixadores e acessórios para obras industriais e manutenção.',
+        'path' => '/produtos',
+        'schema_type' => 'CollectionPage',
+    ],
+    'portfolio' => [
+        'title' => 'Portfólio de projetos de isolamento térmico | Ferriso',
+        'description' => 'Confira projetos executados pela Ferriso em isolamento térmico, revestimentos e soluções sob medida para diferentes setores industriais.',
+        'path' => '/portfolio',
+        'schema_type' => 'CollectionPage',
+    ],
+    'avaliacoes' => [
+        'title' => 'Avaliações de clientes | Ferriso Isolamentos',
+        'description' => 'Leia feedbacks de clientes sobre projetos e soluções de isolamento térmico realizados pela Ferriso Isolamentos.',
+        'path' => '/avaliacoes',
+        'schema_type' => 'WebPage',
+    ],
+    'contato' => [
+        'title' => 'Contato para orçamento de isolamento térmico | Ferriso',
+        'description' => 'Fale com a Ferriso Isolamentos para solicitar orçamento, tirar dúvidas ou conversar sobre soluções de isolamento térmico para sua obra.',
+        'path' => '/contato',
+        'schema_type' => 'ContactPage',
+    ],
+    'privacidade' => [
+        'title' => 'Política de Privacidade | Ferriso Isolamentos',
+        'description' => 'Entenda como a Ferriso Isolamentos trata dados pessoais enviados pelo site, newsletter, formulários de contato, telefone e WhatsApp.',
+        'path' => '/privacidade',
+        'schema_type' => 'WebPage',
+    ],
+];
+
+if (!function_exists('ferriso_absolute_url')) {
+    function ferriso_absolute_url(string $path, string $baseUrl): string
+    {
+        if (preg_match('#^https?://#i', $path)) {
+            return $path;
+        }
+
+        return rtrim($baseUrl, '/') . '/' . ltrim($path, '/');
+    }
+}
+
+$incomingMeta = (isset($meta) && is_array($meta)) ? $meta : [];
+$defaultMeta = [
+    'title' => $siteName,
+    'description' => $siteDescription,
+    'keywords' => $siteKeywords,
+    'path' => '/',
+    'image' => '/img/og-preview.jpg',
+    'image_alt' => 'Ferriso Isolações Térmicas - isolamento térmico industrial',
+    'robots' => 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    'schema_type' => 'WebPage',
+];
+
+$activeMeta = $pageMetaByActive[$active] ?? [];
+$seoMeta = array_replace($defaultMeta, $activeMeta, $incomingMeta);
+$seoTitle = trim($seoMeta['title']);
+if (stripos($seoTitle, 'Ferriso') === false) {
+    $seoTitle .= ' | ' . $siteName;
+}
+
+$canonicalUrl = $seoMeta['canonical'] ?? ferriso_absolute_url($seoMeta['path'], $siteBaseUrl);
+$ogImageUrl = ferriso_absolute_url($seoMeta['image'], $siteBaseUrl);
+$preloadImage = $seoMeta['preload_image'] ?? ($bannerImg ?? null);
+$preloadImageUrl = $preloadImage ? ferriso_absolute_url($preloadImage, $siteBaseUrl) : null;
+$scriptFile = $_SERVER['SCRIPT_FILENAME'] ?? __FILE__;
+$updatedTime = is_readable($scriptFile) ? gmdate(DATE_ATOM, filemtime($scriptFile)) : gmdate(DATE_ATOM);
+
+$schemaGraph = [];
+if (stripos($seoMeta['robots'], 'noindex') === false) {
+    $organizationId = $siteBaseUrl . '/#organization';
+    $websiteId = $siteBaseUrl . '/#website';
+    $webpageId = $canonicalUrl . '#webpage';
+
+    $schemaGraph[] = [
+        '@type' => 'LocalBusiness',
+        '@id' => $organizationId,
+        'name' => $siteName,
+        'alternateName' => $siteShortName,
+        'url' => $siteBaseUrl . '/',
+        'logo' => [
+            '@type' => 'ImageObject',
+            'url' => ferriso_absolute_url('/img/logo.png', $siteBaseUrl),
+            'width' => 160,
+            'height' => 50,
+        ],
+        'image' => $ogImageUrl,
+        'description' => $siteDescription,
+        'telephone' => '+55 16 99105-8025',
+        'email' => 'contato@ferrisoisolamentos.com.br',
+        'taxID' => '59.643.942/0001-30',
+        'address' => [
+            '@type' => 'PostalAddress',
+            'addressLocality' => 'Barrinha',
+            'addressRegion' => 'SP',
+            'addressCountry' => 'BR',
+        ],
+        'areaServed' => [
+            [
+                '@type' => 'AdministrativeArea',
+                'name' => 'Barrinha, SP',
+            ],
+            [
+                '@type' => 'AdministrativeArea',
+                'name' => 'Ribeirão Preto e região',
+            ],
+        ],
+        'openingHoursSpecification' => [
+            [
+                '@type' => 'OpeningHoursSpecification',
+                'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                'opens' => '08:00',
+                'closes' => '17:00',
+            ],
+        ],
+        'contactPoint' => [
+            '@type' => 'ContactPoint',
+            'telephone' => '+55 16 99105-8025',
+            'contactType' => 'customer service',
+            'areaServed' => 'BR',
+            'availableLanguage' => 'Portuguese',
+        ],
+    ];
+
+    $schemaGraph[] = [
+        '@type' => 'WebSite',
+        '@id' => $websiteId,
+        'url' => $siteBaseUrl . '/',
+        'name' => $siteName,
+        'alternateName' => $siteShortName,
+        'inLanguage' => 'pt-BR',
+        'publisher' => ['@id' => $organizationId],
+    ];
+
+    $pageSchema = [
+        '@type' => $seoMeta['schema_type'],
+        '@id' => $webpageId,
+        'url' => $canonicalUrl,
+        'name' => $seoTitle,
+        'description' => $seoMeta['description'],
+        'isPartOf' => ['@id' => $websiteId],
+        'about' => ['@id' => $organizationId],
+        'primaryImageOfPage' => [
+            '@type' => 'ImageObject',
+            'url' => $ogImageUrl,
+            'width' => 1200,
+            'height' => 630,
+        ],
+        'inLanguage' => 'pt-BR',
+        'dateModified' => $updatedTime,
+    ];
+
+    if ($active !== 'home' && !empty($seoMeta['path'])) {
+        $breadcrumbId = $canonicalUrl . '#breadcrumb';
+        $pageSchema['breadcrumb'] = ['@id' => $breadcrumbId];
+        $schemaGraph[] = [
+            '@type' => 'BreadcrumbList',
+            '@id' => $breadcrumbId,
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => 'Início',
+                    'item' => $siteBaseUrl . '/',
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => preg_replace('/\s+\|\s+.*$/', '', $seoTitle),
+                    'item' => $canonicalUrl,
+                ],
+            ],
+        ];
+    }
+
+    $schemaGraph[] = $pageSchema;
+
+    if (in_array($active, ['home', 'areas'], true)) {
+        $schemaGraph[] = [
+            '@type' => 'Service',
+            '@id' => $siteBaseUrl . '/areas#service',
+            'name' => 'Isolamento térmico industrial',
+            'serviceType' => 'Isolamento térmico, revestimento térmico e manutenção industrial',
+            'description' => 'Serviços de isolamento térmico para indústrias e obras, com foco em eficiência energética, segurança e durabilidade.',
+            'provider' => ['@id' => $organizationId],
+            'areaServed' => 'Barrinha, Ribeirão Preto e região',
+            'url' => $siteBaseUrl . '/areas',
+        ];
+    }
+}
+$schemaJson = $schemaGraph ? json_encode([
+    '@context' => 'https://schema.org',
+    '@graph' => $schemaGraph,
+], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) : '';
 
 // garante conexão com o banco, se ainda não existir
 if (!isset($con)) {
@@ -20,6 +241,9 @@ if (!isset($con)) {
         require_once $dbPath;
     }
 }
+
+$show_portfolio = $show_portfolio ?? true;
+$show_avaliacoes = $show_avaliacoes ?? true;
 
 try {
     if (isset($con) && $con instanceof mysqli) {
@@ -49,29 +273,49 @@ try {
 
 <head>
     <meta charset="utf-8">
-    <title>Ferriso - Isolações Térmicas</title>
-    <meta name="author" content="HTML Codex">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title><?= htmlspecialchars($seoTitle, ENT_QUOTES, 'UTF-8') ?></title>
+    <meta name="author" content="Ferriso Isolamentos">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<?= htmlspecialchars($seoMeta['description'], ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="keywords" content="<?= htmlspecialchars($seoMeta['keywords'], ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="robots" content="<?= htmlspecialchars($seoMeta['robots'], ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="googlebot" content="<?= htmlspecialchars($seoMeta['robots'], ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="theme-color" content="#002c53">
+    <link rel="canonical" href="<?= htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8') ?>">
+    <link rel="alternate" hreflang="pt-BR" href="<?= htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8') ?>">
+    <link rel="alternate" hreflang="x-default" href="<?= htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8') ?>">
+    <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Meta Tags -->
-    <meta name="description" content="Soluções de isolamento térmico para indústrias e obras, com equipe experiente, qualidade certificada e entrega ágil em Ribeirão Preto e região.">
-    <meta name="keywords" content="ferriso, ferriso isolamentos, ferriso isolações, ferriso isolacoes, isolacoes, isolamento térmico, revestimento térmico, Ribeirão Preto, barrinha, isolamento barrinha">
-    <link rel="canonical" href="https://ferrisoisolamentos.com.br" />
-    <link rel="manifest" href="site.webmanifest">
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="<?= htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:title" content="<?= htmlspecialchars($seoTitle, ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:description" content="<?= htmlspecialchars($seoMeta['description'], ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:url" content="<?= htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:image" content="<?= htmlspecialchars($ogImageUrl, ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:image:secure_url" content="<?= htmlspecialchars($ogImageUrl, ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="<?= htmlspecialchars($seoMeta['image_alt'], ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:updated_time" content="<?= htmlspecialchars($updatedTime, ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= htmlspecialchars($seoTitle, ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="twitter:description" content="<?= htmlspecialchars($seoMeta['description'], ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="twitter:image" content="<?= htmlspecialchars($ogImageUrl, ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="twitter:image:alt" content="<?= htmlspecialchars($seoMeta['image_alt'], ENT_QUOTES, 'UTF-8') ?>">
+    <?php if ($preloadImageUrl): ?>
+        <link rel="preload" as="image" href="<?= htmlspecialchars($preloadImageUrl, ENT_QUOTES, 'UTF-8') ?>" fetchpriority="high">
+    <?php endif; ?>
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="/img/favicon.ico" rel="icon">
 
-    <!-- Infos Google Search -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "url": "https://www.ferrisoisolamentos.com.br",
-            "name": "Ferriso Isolamentos",
-            "alternateName": "Ferriso"
-        }
-    </script>
+    <?php if ($schemaJson): ?>
+        <!-- Structured Data -->
+        <script type="application/ld+json"><?= $schemaJson ?></script>
+    <?php endif; ?>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,7 +355,7 @@ try {
     <!-- LOADING -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border spinner-gradient" role="status" style="width:6rem;height:6rem;"></div>
-        <img src="/img/F.png" alt="Carregando..." class="position-absolute top-50 start-50 translate-middle" style="width: 50px; height: 50px;">
+        <img src="/img/F.png" alt="" width="50" height="50" aria-hidden="true" class="position-absolute top-50 start-50 translate-middle" style="width: 50px; height: 50px;">
     </div>
     <!-- FIM DO LOADING -->
 
@@ -147,8 +391,8 @@ try {
         <div class="row align-items-center top-bar">
             <!-- Logo: ocupa 12 no mobile, 3 no lg -->
             <div class="col-12 col-lg-3 text-center text-lg-start">
-                <a href="index.php" class="navbar-brand m-0 p-0">
-                    <img src="img/logo.png" alt="Logo">
+                <a href="/" class="navbar-brand m-0 p-0">
+                    <img src="img/logo.png" alt="Ferriso Isolações Térmicas" width="160" height="50">
                 </a>
             </div>
 
@@ -209,21 +453,21 @@ try {
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav me-auto p-3 p-lg-0">
-                <a href="index.php" class="nav-item nav-link <?= $active === 'home' ? 'active' : '' ?>">Início</a>
-                <a href="sobre.php" class="nav-item nav-link <?= $active === 'sobre' ? 'active' : '' ?>">Sobre</a>
+                <a href="/" class="nav-item nav-link <?= $active === 'home' ? 'active' : '' ?>">Início</a>
+                <a href="/sobre" class="nav-item nav-link <?= $active === 'sobre' ? 'active' : '' ?>">Sobre</a>
                 <?php if ($show_portfolio): ?>
-                    <a href="portfolio.php" class="nav-item nav-link <?= $active === 'portfolio' ? 'active' : '' ?>">Portfólio</a>
+                    <a href="/portfolio" class="nav-item nav-link <?= $active === 'portfolio' ? 'active' : '' ?>">Portfólio</a>
                 <?php endif; ?>
-                <a href="areas.php" class="nav-item nav-link <?= $active === 'areas' ? 'active' : '' ?>">Serviços</a>
-                <a href="produtos.php" class="nav-item nav-link <?= $active === 'produtos' ? 'active' : '' ?>">Produtos</a>
+                <a href="/areas" class="nav-item nav-link <?= $active === 'areas' ? 'active' : '' ?>">Serviços</a>
+                <a href="/produtos" class="nav-item nav-link <?= $active === 'produtos' ? 'active' : '' ?>">Produtos</a>
                 <?php if ($show_avaliacoes): ?>
-                    <a href="avaliacoes.php" class="nav-item nav-link <?= $active === 'avaliacoes' ? 'active' : '' ?>">Avaliações</a>
+                    <a href="/avaliacoes" class="nav-item nav-link <?= $active === 'avaliacoes' ? 'active' : '' ?>">Avaliações</a>
                 <?php endif; ?>
                 <!-- mobile -->
-                <a href="contato.php" class="nav-item nav-link d-block d-lg-none">Contato</a>
+                <a href="/contato" class="nav-item nav-link d-block d-lg-none">Contato</a>
             </div>
             <!-- desktop -->
-            <a href="contato.php" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
+            <a href="/contato" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
         </div>
     </nav>
     <!-- Navbar -->

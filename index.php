@@ -65,18 +65,18 @@ $active = 'home';
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                <img class="img-fluid" src="img/carousel-1.jpg" alt="Image">
+                <img class="img-fluid" src="img/carousel-1.jpg" alt="" width="1920" height="1080">
             </button>
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="1" aria-label="Slide 2">
-                <img class="img-fluid" src="img/carousel-2.jpg" alt="Image">
+                <img class="img-fluid" src="img/carousel-2.jpg" alt="" width="1920" height="1080">
             </button>
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2" aria-label="Slide 3">
-                <img class="img-fluid" src="img/carousel-3.jpg" alt="Image">
+                <img class="img-fluid" src="img/carousel-3.jpg" alt="" width="1920" height="1080">
             </button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                <img class="w-100" src="img/carousel-1.jpg" alt="Equipe técnica de isolamento térmico industrial da Ferriso" width="1920" height="1080" fetchpriority="high">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-4 animated zoomIn">NÓS OFERECEMOS</h4>
@@ -85,7 +85,7 @@ $active = 'home';
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                <img class="w-100" src="img/carousel-2.jpg" alt="Soluções modernas de isolamento térmico para obras industriais" width="1920" height="1080" decoding="async">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-4 animated zoomIn">TRAZEMOS</h4>
@@ -94,7 +94,7 @@ $active = 'home';
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="img/carousel-3.jpg" alt="Image">
+                <img class="w-100" src="img/carousel-3.jpg" alt="Aplicação de isolamento térmico com foco em tradição e inovação" width="1920" height="1080" decoding="async">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-4 animated zoomIn">CRESCEMOS COM</h4>
@@ -166,7 +166,7 @@ $active = 'home';
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="img-border">
-                    <img class="img-fluid" src="img/about.jpg" alt="">
+                    <img class="img-fluid" src="img/about.jpg" alt="Equipe da Ferriso em solução de isolamento térmico industrial" width="1024" height="1024" loading="lazy" decoding="async">
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -174,7 +174,7 @@ $active = 'home';
                     <h6 class="section-title bg-white text-start text-primary pe-3">SOBRE</h6>
                     <h1 class="display-6 mb-4">Experiência que <span class="text-primary">MODERNIZA</span> o Isolamento Térmico</h1>
                     <p>A Ferriso Isolamentos nasceu para ser a ponte entre a experiência de campo e o que há de mais atual em soluções de isolamento térmico. Embora recente como CNPJ, nossa base é formada por fundadores que há anos atuam no setor, acumulando projetos em diferentes segmentos e entendendo, na prática, o que funciona — e o que precisa evoluir.</p>
-                    <a class="btn btn-primary rounded-pill py-3 px-5" href="/sobre.php">SAIBA MAIS</a>
+                    <a class="btn btn-primary rounded-pill py-3 px-5" href="/sobre">SAIBA MAIS</a>
                 </div>
             </div>
         </div>
@@ -245,7 +245,7 @@ $active = 'home';
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="img-border">
-                        <img class="img-fluid" src="img/diferenciais.jpg" alt="">
+                        <img class="img-fluid" src="img/diferenciais.jpg" alt="Materiais e acabamento técnico para isolamento térmico" width="1536" height="1024" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -270,6 +270,8 @@ $active = 'home';
                         <img
                             class="img-fluid rounded mb-4"
                             src="<?= htmlspecialchars(img_url($a['capa_img'])) ?>"
+                            loading="lazy"
+                            decoding="async"
                             alt="<?= htmlspecialchars($a['nome']) ?>">
                         <h4 class="mb-0"><?= htmlspecialchars($a['nome']) ?></h4>
                         <p style="margin-top: 1rem;"><?= htmlspecialchars($a['resumo']) ?></p>
@@ -279,7 +281,7 @@ $active = 'home';
 
 
             <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
-                <a class="btn btn-primary rounded-pill py-3 px-5" href="/areas.php">VEJA MAIS SETORES</a>
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/areas">VEJA MAIS SETORES</a>
             </div>
         </div>
     </div>
@@ -298,7 +300,7 @@ $active = 'home';
                 <?php foreach ($proj as $idx => $p): ?>
                     <div class="project-item border rounded h-100 p-4 d-flex flex-column" data-dot="<?= htmlspecialchars($idx + 1) ?>">
                         <div class="position-relative mb-4 project-thumb">
-                            <img class="img-fluid rounded" src="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" alt="<?= htmlspecialchars($p['titulo']) ?>">
+                            <img class="img-fluid rounded" src="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" alt="<?= htmlspecialchars($p['titulo']) ?>" loading="lazy" decoding="async">
                             <a href="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
                         </div>
                         <h6><?= htmlspecialchars($p['titulo']) ?></h6>
@@ -312,7 +314,7 @@ $active = 'home';
             </div>
 
             <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
-                <a class="btn btn-primary rounded-pill py-3 px-5" href="/portfolio.php">
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/portfolio">
                     VEJA MAIS PROJETOS
                 </a>
             </div>
@@ -339,6 +341,8 @@ $active = 'home';
                     <div class="team-item text-center p-4 h-100 d-flex flex-column">
                         <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
                             src="<?= htmlspecialchars(img_url($pr['capa_img'])) ?>"
+                            loading="lazy"
+                            decoding="async"
                             alt="<?= htmlspecialchars($pr['nome']) ?>">
 
                         <div class="team-text">
@@ -356,7 +360,7 @@ $active = 'home';
                                     . "Data de entrega desejada:\n"
                                     . "Observações:\n";
 
-                                $linkOrcamento = '/contato.php?assunto=' . urlencode($assunto)
+                                $linkOrcamento = '/contato?assunto=' . urlencode($assunto)
                                     . '&mensagem=' . urlencode($mensagem);
                                 ?>
 
@@ -372,7 +376,7 @@ $active = 'home';
             </div>
 
             <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
-                <a class="btn btn-primary rounded-pill py-3 px-5" href="/produtos.php">
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/produtos">
                     VEJA MAIS PRODUTOS
                 </a>
             </div>
@@ -402,6 +406,8 @@ $active = 'home';
                         <div class="d-flex align-items-center mb-3">
                             <img class="flex-shrink-0 rounded-circle border p-1"
                                 src="<?= htmlspecialchars($avatar) ?>"
+                                loading="lazy"
+                                decoding="async"
                                 alt="<?= htmlspecialchars($av['nome_cliente']) ?>">
 
                             <div class="ms-4">
@@ -420,7 +426,7 @@ $active = 'home';
             </div>
 
             <div class="text-center mx-auto mb-5 wow fadeInUp pt-5" data-wow-delay="0.1s" style="max-width: 600px;">
-                <a class="btn btn-primary rounded-pill py-3 px-5" href="/avaliacoes.php">
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/avaliacoes">
                     VEJA MAIS AVALIAÇÕES
                 </a>
             </div>
@@ -435,7 +441,7 @@ $active = 'home';
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="img-border">
-                    <img class="img-fluid" src="img/contato-cta.jpg" alt="Fale Conosco">
+                    <img class="img-fluid" src="img/contato-cta.jpg" alt="Atendimento da Ferriso para orçamento de isolamento térmico" width="500" height="400" loading="lazy" decoding="async">
                 </div>
             </div>
 
@@ -448,7 +454,7 @@ $active = 'home';
                         Se preferir, descreva sua necessidade e nossa equipe retorna com a melhor solução para sua obra.
                     </p>
 
-                    <a class="btn btn-primary rounded-pill py-3 px-5" href="/contato.php">
+                    <a class="btn btn-primary rounded-pill py-3 px-5" href="/contato">
                         ENTRAR EM CONTATO
                     </a>
                 </div>

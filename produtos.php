@@ -106,7 +106,7 @@ foreach ($produtos as $p) {
                             . "Quantidade:\n"
                             . "Data de entrega desejada:\n"
                             . "Observações:\n";
-                        $linkOrcamento = '/contato.php?assunto=' . urlencode($assunto)
+                        $linkOrcamento = '/contato?assunto=' . urlencode($assunto)
                             . '&mensagem=' . urlencode($mensagem);
                         ?>
                         <div class="produto-item border rounded h-100 p-4 d-flex flex-column">
@@ -114,6 +114,8 @@ foreach ($produtos as $p) {
                                 <img
                                     class="img-fluid rounded"
                                     src="<?= htmlspecialchars(img_url($p['capa_img'])) ?>"
+                                    loading="lazy"
+                                    decoding="async"
                                     alt="<?= htmlspecialchars($p['nome']) ?>">
                             </div>
                             <h5 class="mb-2 text-center"><?= htmlspecialchars($p['nome']) ?></h5>

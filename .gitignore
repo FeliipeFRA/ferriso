@@ -23,5 +23,6 @@ migration-backups/
 *.log
 *.tmp
 *.temp
+.seo-cache/
 tmp/
 temp/

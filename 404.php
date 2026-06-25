@@ -6,7 +6,12 @@ header('X-Robots-Tag: noindex, nofollow');
 ?>
 
 <?php 
-$meta = ['title'=>'Página não encontrada', 'robots'=>'noindex'];
+$meta = [
+    'title' => 'Página não encontrada',
+    'description' => 'A página solicitada não foi encontrada no site da Ferriso Isolamentos.',
+    'path' => '/404',
+    'robots' => 'noindex, nofollow, noarchive',
+];
 require __DIR__ . '/partials/header.php'; 
 ?>
 
@@ -19,7 +24,7 @@ require __DIR__ . '/partials/header.php';
                     <h1 class="display-1">404</h1>
                     <h1 class="mb-4">Página Não Encontrada</h1>
                     <p class="mb-4">O link pode estar incorreto ou a página foi removida.</p>
-                    <a class="btn btn-primary rounded-pill py-3 px-5" href="index.php">Volte ao Ínicio</a>
+                    <a class="btn btn-primary rounded-pill py-3 px-5" href="/">Volte ao Ínicio</a>
                 </div>
             </div>
         </div>

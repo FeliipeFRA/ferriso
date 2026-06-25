@@ -65,7 +65,7 @@ $bannerImg = "img/headers/produtos.jpg";
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="img-border">
-                    <img class="img-fluid" src="img/about.jpg" alt="">
+                    <img class="img-fluid" src="img/about.jpg" alt="Equipe da Ferriso em solução de isolamento térmico industrial" width="1024" height="1024" loading="lazy" decoding="async">
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -78,7 +78,7 @@ $bannerImg = "img/headers/produtos.jpg";
 
                     <!--
                         <div class="d-flex align-items-center mb-4 pb-2">
-                            <img class="flex-shrink-0 rounded-circle" src="img/team-1.jpg" alt="" style="width: 50px; height: 50px;">
+                                <img class="flex-shrink-0 rounded-circle" src="img/team-1.jpg" alt="" width="50" height="50" style="width: 50px; height: 50px;">
                             <div class="ps-4">
                                 <h6>Moço</h6>
                                 <small>SEO & Founder</small>
@@ -157,7 +157,7 @@ $bannerImg = "img/headers/produtos.jpg";
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="img-border">
-                    <img class="img-fluid" src="img/diferenciais.jpg" alt="">
+                    <img class="img-fluid" src="img/diferenciais.jpg" alt="Materiais e acabamento técnico para isolamento térmico" width="1536" height="1024" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>

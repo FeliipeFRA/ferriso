@@ -41,7 +41,7 @@ if ($row) {
 }
 
 // Envia confirmação
-$confirmLink = 'https://www.ferrisoisolamentos.com.br/newsletter/confirm.php?e='.urlencode($email).'&t='.$token;
+$confirmLink = 'https://ferrisoisolamentos.com.br/newsletter/confirm?e='.urlencode($email).'&t='.$token;
 $subject = 'Confirme sua inscrição - Ferriso Isolamentos';
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type:text/html; charset=UTF-8\r\n";

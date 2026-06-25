@@ -54,6 +54,8 @@ $avaliacoes = $resa->fetch_all(MYSQLI_ASSOC);
                         <div class="d-flex align-items-center mb-3">
                             <img class="flex-shrink-0 rounded-circle border p-1"
                                 src="<?= htmlspecialchars($avatar) ?>"
+                                loading="lazy"
+                                decoding="async"
                                 alt="<?= htmlspecialchars($av['nome_cliente']) ?>">
 
                             <div class="ms-4">

@@ -11,6 +11,19 @@ RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\.ferrisoisolamentos\.com\.br$ [NC]
 RewriteRule ^ https://ferrisoisolamentos.com.br%{REQUEST_URI} [L,R=301]
 
+# URLs públicas limpas: redireciona .php para a versão canônica sem extensão.
+RewriteRule ^index\.php$ / [L,R=301]
+RewriteRule ^(sobre|areas|produtos|portfolio|avaliacoes|contato|privacidade)\.php$ /$1 [L,R=301]
+RewriteRule ^newsletter/confirm\.php$ /newsletter/confirm [L,R=301]
+
+# Evita duas versões da mesma página com e sem barra final.
+RewriteRule ^(sobre|areas|produtos|portfolio|avaliacoes|contato|privacidade)/$ /$1 [L,R=301]
+
+# Rewrites internos: arquivos PHP continuam sendo executados no servidor.
+RewriteRule ^(sobre|areas|produtos|portfolio|avaliacoes|contato|privacidade)$ $1.php [L]
+RewriteRule ^contato/contato_enviar$ contato/contato_enviar.php [L]
+RewriteRule ^newsletter/(subscribe|confirm)$ newsletter/$1.php [L]
+
 # Sua 404
 ErrorDocument 404 /404.php
 

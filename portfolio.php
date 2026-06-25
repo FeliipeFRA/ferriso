@@ -56,6 +56,8 @@ $proj = $resp->fetch_all(MYSQLI_ASSOC);
                             <a href="<?= htmlspecialchars(img_url($p['capa_img'])) ?>" data-lightbox="project-<?= (int)$p['id'] ?>">
                                 <img class="img-fluid"
                                     src="<?= htmlspecialchars(img_url($p['capa_img'])) ?>"
+                                    loading="lazy"
+                                    decoding="async"
                                     alt="<?= htmlspecialchars($p['titulo']) ?>">
                             </a>
                         </div>

@@ -51,9 +51,9 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-light mb-4 hover-vermelho">Links Rápidos</h5>
-                <a class="btn btn-link" href="sobre.php">Sobre</a>
-                <a class="btn btn-link" href="contato.php">Contato</a>
-                <a class="btn btn-link" href="privacidade.php">Política de Privacidade</a>
+                <a class="btn btn-link" href="/sobre">Sobre</a>
+                <a class="btn btn-link" href="/contato">Contato</a>
+                <a class="btn btn-link" href="/privacidade">Política de Privacidade</a>
                 <a class="btn btn-link" href="admin/login.php" rel="nofollow noopener">Painel Administrativo</a>
             </div>
 
@@ -62,7 +62,7 @@
                 <h5 class="text-light mb-4 hover-vermelho">Fique por dentro</h5>
                 <p>Receba em seu e-mail informações das tendências do mercado de isolamento térmico.</p>
 
-                <form id="newsletterForm" action="/newsletter/subscribe.php" method="post"
+                <form id="newsletterForm" action="/newsletter/subscribe" method="post"
                     class="position-relative mx-auto" style="max-width: 400px;">
                     <label for="nl-email" class="visually-hidden">E-mail</label>
                     <input id="nl-email" name="email" type="email"
@@ -76,7 +76,7 @@
                         <input class="form-check-input" type="checkbox" id="nl-consent" name="agree" required>
                         <label class="form-check-label text-light" for="nl-consent">
                             Concordo em receber e-mails da Ferriso. Li a
-                            <a href="/privacidade.php" class="text-decoration-underline">Política de Privacidade</a>.
+                            <a href="/privacidade" class="text-decoration-underline">Política de Privacidade</a>.
                         </label>
                     </div>
                 </form>

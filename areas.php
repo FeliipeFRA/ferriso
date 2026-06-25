@@ -49,6 +49,8 @@ $areas = $res->fetch_all(MYSQLI_ASSOC);
                         <img
                             class="img-fluid rounded mb-4"
                             src="<?= htmlspecialchars(img_url($a['capa_img'])) ?>"
+                            loading="lazy"
+                            decoding="async"
                             alt="<?= htmlspecialchars($a['nome']) ?>">
                         <h4 class="mb-0"><?= htmlspecialchars($a['nome']) ?></h4>
                         <p style="margin-top: 1rem;"><?= htmlspecialchars($a['resumo']) ?></p>

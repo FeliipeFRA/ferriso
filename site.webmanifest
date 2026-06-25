@@ -1,0 +1,19 @@
+{
+  "name": "Ferriso Isolações Térmicas",
+  "short_name": "Ferriso",
+  "description": "Soluções de isolamento térmico industrial, revestimentos térmicos e materiais técnicos para obras e manutenção.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#002c53",
+  "icons": [
+    {
+      "src": "/img/F.png",
+      "sizes": "1130x1168",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
