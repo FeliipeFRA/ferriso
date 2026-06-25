@@ -74,7 +74,7 @@ $bannerImg = "img/headers/contato.jpg";
 
         <div class="row g-0 justify-content-center">
             <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.5s">
-                <form action="/contato/contato_enviar" method="post" novalidate>
+                <form action="/forms/contato_enviar" method="post" novalidate>
                     <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token) ?>">
                     <input type="hidden" name="origem" value="Site - Página de Contato">
 

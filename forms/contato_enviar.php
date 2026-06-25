@@ -12,7 +12,7 @@ require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../config/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /contato.php');
+    header('Location: /contato');
     exit;
 }
 
@@ -99,7 +99,7 @@ if (!empty($errors)) {
         'assunto'  => $assunto,
         'mensagem' => $mensagem,
     ];
-    header('Location: /contato.php');
+    header('Location: /contato');
     exit;
 }
 
@@ -117,7 +117,7 @@ $stmt = $con->prepare("
 
 if (!$stmt) {
     $_SESSION['contact_errors'] = ['Erro interno ao preparar o cadastro da mensagem.'];
-    header('Location: /contato.php');
+    header('Location: /contato');
     exit;
 }
 
@@ -136,12 +136,12 @@ $stmt->bind_param(
 
 if (!$stmt->execute()) {
     $_SESSION['contact_errors'] = ['Erro ao salvar sua mensagem. Tente novamente em alguns instantes.'];
-    header('Location: /contato.php');
+    header('Location: /contato');
     exit;
 }
 
 $stmt->close();
 
 $_SESSION['contact_success'] = 'Sua mensagem foi enviada com sucesso. Em breve entraremos em contato.';
-header('Location: /contato.php');
+header('Location: /contato');
 exit;
