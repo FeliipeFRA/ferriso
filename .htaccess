@@ -24,7 +24,7 @@ RewriteRule ^(sobre|areas|produtos|portfolio|avaliacoes|contato|privacidade)/$ /
 
 # Rewrites internos: arquivos PHP continuam sendo executados no servidor.
 RewriteRule ^(sobre|areas|produtos|portfolio|avaliacoes|contato|privacidade)$ $1.php [L]
-RewriteRule ^forms/contato_enviar$ forms/contato_enviar.php [L]
+RewriteRule ^contato/contato_enviar$ contato/contato_enviar.php [L]
 RewriteRule ^newsletter/(subscribe|confirm)$ newsletter/$1.php [L]
 
 # Sua 404

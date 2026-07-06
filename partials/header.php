@@ -349,6 +349,24 @@ try {
 
         gtag('config', 'G-NV11WS86B9');
     </script>
+
+    <!-- GTranslate: public language convenience widget -->
+    <script>
+        window.gtranslateSettings = {
+            "default_language": "pt",
+            "native_language_names": true,
+            "languages": ["pt", "en", "es"],
+            "wrapper_selector": ".gtranslate_wrapper",
+            "flag_size": 24,
+            "flag_style": "2d",
+            "alt_flags": {
+                "pt": "brazil",
+                "en": "usa",
+                "es": "mexico"
+            }
+        };
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
 </head>
 
 <body>
@@ -468,6 +486,10 @@ try {
             </div>
             <!-- desktop -->
             <a href="/contato" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Contato</a>
+            <div class="ferriso-language-switcher notranslate" translate="no" aria-label="Language selector">
+                <span class="visually-hidden">Language selector</span>
+                <div class="gtranslate_wrapper"></div>
+            </div>
         </div>
     </nav>
     <!-- Navbar -->

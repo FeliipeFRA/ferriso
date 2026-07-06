@@ -92,7 +92,8 @@
                     <a href="https://ferrisoisolamentos.com.br">Ferriso Isolações</a>, Todos os Direitos Reservados.
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    Inovação com a Força da Experiência</a>
+                    Inovação com a Força da Experiência<br>
+                    <small>Desenvolvido por <a href="https://proatech.com.br" target="_blank" rel="noopener external">Proatech</a></small>
                 </div>
             </div>
         </div>
